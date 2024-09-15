@@ -1,4 +1,4 @@
-package me.jddev0.epbrg;
+package me.jddev0.epru;
 
 import com.mojang.logging.LogUtils;
 import net.neoforged.api.distmarker.Dist;
@@ -9,12 +9,12 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 
-@Mod(EnergizedPowerModRG.MODID)
-public class EnergizedPowerModRG {
-    public static final String MODID = "energizedpowerrg";
+@Mod(EnergizedPowerRUMod.MODID)
+public class EnergizedPowerRUMod {
+    public static final String MODID = "energizedpowerru";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public EnergizedPowerModRG(IEventBus modEventBus) {
+    public EnergizedPowerRUMod(IEventBus modEventBus) {
 
     }
 

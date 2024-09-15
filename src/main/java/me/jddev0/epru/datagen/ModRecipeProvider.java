@@ -1,6 +1,6 @@
-package me.jddev0.epbrg.datagen;
+package me.jddev0.epru.datagen;
 
-import me.jddev0.epbrg.EnergizedPowerModRG;
+import me.jddev0.epru.EnergizedPowerRUMod;
 import me.jddev0.ep.recipe.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -331,7 +331,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private void addCrusherRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output, String recipeIngredientName) {
-        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerModRG.MODID, PATH_PREFIX + "crusher/" +
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "crusher/" +
                 getItemName(output.getItem()) + "_from_crushing_" + recipeIngredientName);
 
         CrusherRecipe recipe = new CrusherRecipe(output, input);
@@ -381,7 +381,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
     private void addSawmillRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output,
                                          int sawdustAmount, String outputName, String recipeIngredientName) {
-        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerModRG.MODID, PATH_PREFIX + "sawmill/" +
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "sawmill/" +
                 outputName + "_from_sawing_" + recipeIngredientName);
 
         SawmillRecipe recipe = new SawmillRecipe(output, input, sawdustAmount);
@@ -389,7 +389,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
     private void addSawmillRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output,
                                          ItemStack secondaryOutput, String outputName, String recipeIngredientName) {
-        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerModRG.MODID, PATH_PREFIX + "sawmill/" +
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "sawmill/" +
                 outputName + "_from_sawing_" + recipeIngredientName);
 
         SawmillRecipe recipe = new SawmillRecipe(output, secondaryOutput, input);
@@ -426,7 +426,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     private void addPlantGrowthChamberRecipe(RecipeOutput recipeOutput, Ingredient input,
                                              PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] outputs, int ticks,
                                              String outputName, String recipeIngredientName) {
-        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerModRG.MODID, PATH_PREFIX + "growing/" +
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "growing/" +
                 outputName + "_from_growing_" + recipeIngredientName);
 
         PlantGrowthChamberRecipe recipe = new PlantGrowthChamberRecipe(outputs, input, ticks);

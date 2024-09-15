@@ -187,7 +187,7 @@ tasks.withType(ProcessResources).configureEach {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "energizedpowerrg",
+                "Specification-Title"     : "energizedpowerru",
                 "Specification-Vendor"    : "JDDev0",
                 "Specification-Version"   : project.version,
                 "Implementation-Title"    : project.name,
