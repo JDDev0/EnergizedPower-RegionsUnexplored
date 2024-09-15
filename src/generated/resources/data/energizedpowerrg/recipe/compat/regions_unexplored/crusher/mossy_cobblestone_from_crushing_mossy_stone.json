@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "energizedpower:crusher",
+  "ingredient": {
+    "item": "regions_unexplored:mossy_stone"
+  },
+  "output": {
+    "item": "minecraft:mossy_cobblestone"
+  }
+}

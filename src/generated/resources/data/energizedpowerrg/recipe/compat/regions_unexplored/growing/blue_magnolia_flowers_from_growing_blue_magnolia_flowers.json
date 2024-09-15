@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "energizedpower:plant_growth_chamber",
+  "ingredient": {
+    "item": "regions_unexplored:blue_magnolia_flowers"
+  },
+  "outputs": [
+    {
+      "output": {
+        "item": "regions_unexplored:blue_magnolia_flowers"
+      },
+      "percentages": [
+        1.0,
+        1.0,
+        1.0,
+        0.67,
+        0.33,
+        0.33,
+        0.15
+      ]
+    }
+  ],
+  "ticks": 16000
+}

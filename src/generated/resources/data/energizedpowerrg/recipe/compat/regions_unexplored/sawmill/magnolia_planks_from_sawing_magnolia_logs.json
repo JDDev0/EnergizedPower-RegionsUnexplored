@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "tag": "regions_unexplored:magnolia_logs_item"
+  },
+  "output": {
+    "count": 6,
+    "item": "regions_unexplored:magnolia_planks"
+  },
+  "sawdustAmount": 1,
+  "secondaryOutput": {
+    "item": "energizedpower:sawdust"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "regions_unexplored"
+    }
+  ],
+  "type": "energizedpower:plant_growth_chamber",
+  "ingredient": {
+    "item": "regions_unexplored:cobalt_earlight"
+  },
+  "outputs": [
+    {
+      "output": {
+        "item": "regions_unexplored:cobalt_earlight"
+      },
+      "percentages": [
+        1.0,
+        1.0,
+        0.33
+      ]
+    }
+  ],
+  "ticks": 16000
+}
