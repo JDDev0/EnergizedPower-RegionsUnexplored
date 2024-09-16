@@ -387,14 +387,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         SawmillRecipe recipe = new SawmillRecipe(output, input, sawdustAmount);
         recipeOutput.accept(recipeId, recipe, null, modLoaded(REGIONS_UNEXPLORED_MOD_ID));
     }
-    private void addSawmillRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output,
-                                         ItemStack secondaryOutput, String outputName, String recipeIngredientName) {
-        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "sawmill/" +
-                outputName + "_from_sawing_" + recipeIngredientName);
-
-        SawmillRecipe recipe = new SawmillRecipe(output, secondaryOutput, input);
-        recipeOutput.accept(recipeId, recipe, null, modLoaded(REGIONS_UNEXPLORED_MOD_ID));
-    }
 
     private void addBasicFlowerGrowingRecipe(RecipeOutput recipeOutput, ItemLike flowerItem,
                                                     String outputName) {
@@ -403,25 +395,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         1., 1., .33
                 })
         }, 16000, outputName, getItemName(flowerItem));
-    }
-    private void addBasicMushroomsGrowingRecipe(RecipeOutput recipeOutput, ItemLike mushroomItem,
-                                                       String outputName) {
-        addPlantGrowthChamberRecipe(recipeOutput, Ingredient.of(mushroomItem), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(mushroomItem), new double[] {
-                        1., 1., .5, .25
-                })
-        }, 16000, outputName, getItemName(mushroomItem));
-    }
-    private void addBasicAncientFlowerGrowingRecipe(RecipeOutput recipeOutput, ItemLike seedItem,
-                                                           ItemLike flowerItem, String outputName) {
-        addPlantGrowthChamberRecipe(recipeOutput, Ingredient.of(seedItem), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(seedItem), new double[] {
-                        1., .33, .15
-                }),
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(flowerItem), new double[] {
-                        1., .15
-                })
-        }, 16000, outputName, getItemName(seedItem));
     }
     private void addPlantGrowthChamberRecipe(RecipeOutput recipeOutput, Ingredient input,
                                              PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] outputs, int ticks,
