@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:cypress_door"
+  },
+  "output": {
+    "item": "regions_unexplored:cypress_planks"
+  },
+  "sawdustAmount": 3
+}

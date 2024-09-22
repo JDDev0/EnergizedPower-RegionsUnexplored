@@ -1,0 +1,11 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:kapok_fence_gate"
+  },
+  "output": {
+    "count": 2,
+    "item": "regions_unexplored:kapok_planks"
+  },
+  "sawdustAmount": 3
+}

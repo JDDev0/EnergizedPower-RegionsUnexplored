@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:eucalyptus_pressure_plate"
+  },
+  "output": {
+    "item": "regions_unexplored:eucalyptus_planks"
+  },
+  "sawdustAmount": 2
+}

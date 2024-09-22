@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:joshua_fence"
+  },
+  "output": {
+    "item": "regions_unexplored:joshua_planks"
+  },
+  "sawdustAmount": 2
+}

@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:brimwood_pressure_plate"
+  },
+  "output": {
+    "item": "regions_unexplored:brimwood_planks"
+  },
+  "sawdustAmount": 2
+}

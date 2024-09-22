@@ -1,0 +1,11 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "tag": "regions_unexplored:brimwood_logs"
+  },
+  "output": {
+    "count": 6,
+    "item": "regions_unexplored:brimwood_planks"
+  },
+  "sawdustAmount": 1
+}

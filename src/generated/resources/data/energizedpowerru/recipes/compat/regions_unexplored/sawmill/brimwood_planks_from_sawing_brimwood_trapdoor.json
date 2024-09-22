@@ -1,0 +1,11 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:brimwood_trapdoor"
+  },
+  "output": {
+    "count": 2,
+    "item": "regions_unexplored:brimwood_planks"
+  },
+  "sawdustAmount": 3
+}

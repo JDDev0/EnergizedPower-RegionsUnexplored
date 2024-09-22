@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:mauve_door"
+  },
+  "output": {
+    "item": "regions_unexplored:mauve_planks"
+  },
+  "sawdustAmount": 3
+}

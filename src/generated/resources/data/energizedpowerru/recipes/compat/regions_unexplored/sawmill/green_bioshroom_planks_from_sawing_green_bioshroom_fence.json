@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:green_bioshroom_fence"
+  },
+  "output": {
+    "item": "regions_unexplored:green_bioshroom_planks"
+  },
+  "sawdustAmount": 2
+}
