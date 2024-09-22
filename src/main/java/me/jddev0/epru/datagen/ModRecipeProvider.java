@@ -1,8 +1,10 @@
 package me.jddev0.epru.datagen;
 
+import me.jddev0.ep.datagen.recipe.CrusherFinishedRecipe;
+import me.jddev0.ep.datagen.recipe.PlantGrowthChamberFinishedRecipe;
+import me.jddev0.ep.datagen.recipe.SawmillFinishedRecipe;
 import me.jddev0.epru.EnergizedPowerRUMod;
 import me.jddev0.ep.recipe.*;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -11,20 +13,18 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-import net.regions_unexplored.Constants;
+import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.regions_unexplored.RegionsUnexploredMod;
 import net.regions_unexplored.block.RuBlocks;
 import net.regions_unexplored.data.tags.RuTags;
 import net.regions_unexplored.item.RuItems;
 
-import java.util.concurrent.CompletableFuture;
-
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    private static final String REGIONS_UNEXPLORED_MOD_ID = Constants.MOD_ID;
+    private static final String REGIONS_UNEXPLORED_MOD_ID = RegionsUnexploredMod.MOD_ID;
     private static final String PATH_PREFIX = "compat/" + REGIONS_UNEXPLORED_MOD_ID + "/";
 
-    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider);
+    public ModRecipeProvider(PackOutput output) {
+        super(output);
     }
 
     @Override
@@ -331,11 +331,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private void addCrusherRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output, String recipeIngredientName) {
-        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "crusher/" +
+        ResourceLocation recipeId = new ResourceLocation(EnergizedPowerRUMod.MODID, PATH_PREFIX + "crusher/" +
                 getItemName(output.getItem()) + "_from_crushing_" + recipeIngredientName);
 
-        CrusherRecipe recipe = new CrusherRecipe(output, input);
-        recipeOutput.accept(recipeId, recipe, null, modLoaded(REGIONS_UNEXPLORED_MOD_ID));
+        CrusherFinishedRecipe recipe = new CrusherFinishedRecipe(
+                recipeId,
+                output, input
+        );
+        recipeOutput.accept(recipe);
     }
 
     private void addBasicWoodSawmillRecipe(RecipeOutput recipeOutput, ItemStack planksItem,
@@ -381,11 +384,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
     private void addSawmillRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output,
                                          int sawdustAmount, String outputName, String recipeIngredientName) {
-        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "sawmill/" +
+        ResourceLocation recipeId = new ResourceLocation(EnergizedPowerRUMod.MODID, PATH_PREFIX + "sawmill/" +
                 outputName + "_from_sawing_" + recipeIngredientName);
 
-        SawmillRecipe recipe = new SawmillRecipe(output, input, sawdustAmount);
-        recipeOutput.accept(recipeId, recipe, null, modLoaded(REGIONS_UNEXPLORED_MOD_ID));
+        SawmillFinishedRecipe recipe = new SawmillFinishedRecipe(
+                recipeId,
+                output, input, sawdustAmount
+        );
+        recipeOutput.accept(recipe);
     }
 
     private void addBasicFlowerGrowingRecipe(RecipeOutput recipeOutput, ItemLike flowerItem,
@@ -399,10 +405,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     private void addPlantGrowthChamberRecipe(RecipeOutput recipeOutput, Ingredient input,
                                              OutputItemStackWithPercentages[] outputs, int ticks,
                                              String outputName, String recipeIngredientName) {
-        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "growing/" +
+        ResourceLocation recipeId = new ResourceLocation(EnergizedPowerRUMod.MODID, PATH_PREFIX + "growing/" +
                 outputName + "_from_growing_" + recipeIngredientName);
 
-        PlantGrowthChamberRecipe recipe = new PlantGrowthChamberRecipe(outputs, input, ticks);
-        recipeOutput.accept(recipeId, recipe, null, modLoaded(REGIONS_UNEXPLORED_MOD_ID));
+        PlantGrowthChamberFinishedRecipe recipe = new PlantGrowthChamberFinishedRecipe(
+                recipeId,
+                outputs, input, ticks
+        );
+        recipeOutput.accept(recipe);
     }
 }

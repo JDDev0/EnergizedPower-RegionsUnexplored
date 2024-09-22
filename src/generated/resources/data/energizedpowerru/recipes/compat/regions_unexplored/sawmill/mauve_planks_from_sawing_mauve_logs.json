@@ -1,0 +1,11 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "tag": "regions_unexplored:mauve_logs"
+  },
+  "output": {
+    "count": 6,
+    "item": "regions_unexplored:mauve_planks"
+  },
+  "sawdustAmount": 1
+}

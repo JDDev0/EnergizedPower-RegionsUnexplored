@@ -1,0 +1,20 @@
+{
+  "type": "energizedpower:plant_growth_chamber",
+  "ingredient": {
+    "item": "regions_unexplored:salmonberry"
+  },
+  "outputs": [
+    {
+      "output": {
+        "item": "regions_unexplored:salmonberry"
+      },
+      "percentages": [
+        1.0,
+        1.0,
+        0.33,
+        0.17
+      ]
+    }
+  ],
+  "ticks": 16000
+}

@@ -1,0 +1,11 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "tag": "regions_unexplored:larch_logs"
+  },
+  "output": {
+    "count": 6,
+    "item": "regions_unexplored:larch_planks"
+  },
+  "sawdustAmount": 1
+}

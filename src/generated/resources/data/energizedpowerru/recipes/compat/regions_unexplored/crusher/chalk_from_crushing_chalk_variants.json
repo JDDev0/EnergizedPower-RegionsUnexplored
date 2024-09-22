@@ -1,0 +1,17 @@
+{
+  "type": "energizedpower:crusher",
+  "ingredient": [
+    {
+      "item": "regions_unexplored:chalk_bricks"
+    },
+    {
+      "item": "regions_unexplored:polished_chalk"
+    },
+    {
+      "item": "regions_unexplored:chalk_pillar"
+    }
+  ],
+  "output": {
+    "item": "regions_unexplored:chalk"
+  }
+}

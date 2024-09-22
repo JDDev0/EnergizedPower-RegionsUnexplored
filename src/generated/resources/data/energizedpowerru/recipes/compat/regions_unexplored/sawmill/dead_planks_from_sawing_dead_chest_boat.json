@@ -1,0 +1,11 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:dead_chest_boat"
+  },
+  "output": {
+    "count": 5,
+    "item": "regions_unexplored:dead_planks"
+  },
+  "sawdustAmount": 7
+}
