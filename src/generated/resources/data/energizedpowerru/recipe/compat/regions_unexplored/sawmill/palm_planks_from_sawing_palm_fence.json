@@ -12,9 +12,5 @@
   "output": {
     "item": "regions_unexplored:palm_planks"
   },
-  "sawdustAmount": 2,
-  "secondaryOutput": {
-    "count": 2,
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 2
 }

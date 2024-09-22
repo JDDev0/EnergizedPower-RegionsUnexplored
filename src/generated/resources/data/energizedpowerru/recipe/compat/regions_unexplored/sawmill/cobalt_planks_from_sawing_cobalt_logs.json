@@ -13,8 +13,5 @@
     "count": 6,
     "item": "regions_unexplored:cobalt_planks"
   },
-  "sawdustAmount": 1,
-  "secondaryOutput": {
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 1
 }

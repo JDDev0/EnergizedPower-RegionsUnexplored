@@ -12,9 +12,5 @@
   "output": {
     "item": "regions_unexplored:baobab_planks"
   },
-  "sawdustAmount": 3,
-  "secondaryOutput": {
-    "count": 3,
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 3
 }

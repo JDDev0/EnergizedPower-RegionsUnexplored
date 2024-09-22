@@ -13,9 +13,5 @@
     "count": 4,
     "item": "regions_unexplored:pine_planks"
   },
-  "sawdustAmount": 3,
-  "secondaryOutput": {
-    "count": 3,
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 3
 }

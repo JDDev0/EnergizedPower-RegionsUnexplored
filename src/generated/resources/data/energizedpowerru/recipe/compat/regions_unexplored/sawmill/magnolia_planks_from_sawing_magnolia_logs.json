@@ -13,8 +13,5 @@
     "count": 6,
     "item": "regions_unexplored:magnolia_planks"
   },
-  "sawdustAmount": 1,
-  "secondaryOutput": {
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 1
 }

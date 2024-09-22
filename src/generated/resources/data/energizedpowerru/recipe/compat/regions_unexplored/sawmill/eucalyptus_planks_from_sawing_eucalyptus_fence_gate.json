@@ -13,9 +13,5 @@
     "count": 2,
     "item": "regions_unexplored:eucalyptus_planks"
   },
-  "sawdustAmount": 3,
-  "secondaryOutput": {
-    "count": 3,
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 3
 }

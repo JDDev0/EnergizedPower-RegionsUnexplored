@@ -281,50 +281,50 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         addBasicFlowerGrowingRecipe(output, RuBlocks.MYCOTOXIC_DAISY.get(), "mycotoxic_daisy");
         addBasicFlowerGrowingRecipe(output, RuBlocks.TALL_COBALT_EARLIGHT.get(), "tall_cobalt_earlight");
 
-        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.CLOVER.get()), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(RuBlocks.CLOVER.get()), new double[] {
+        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.CLOVER.get()), new OutputItemStackWithPercentages[] {
+                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.CLOVER.get()), new double[] {
                         1., 1., 1., .67, .33, .33, .15
                 })
         }, 16000, "clover", "clover");
 
-        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.ORANGE_CONEFLOWER.get()), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(RuBlocks.ORANGE_CONEFLOWER.get()), new double[] {
+        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.ORANGE_CONEFLOWER.get()), new OutputItemStackWithPercentages[] {
+                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.ORANGE_CONEFLOWER.get()), new double[] {
                         1., 1., 1., .67, .33, .33, .15
                 })
         }, 16000, "orange_coneflower", "orange_coneflower");
 
-        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.PURPLE_CONEFLOWER.get()), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(RuBlocks.PURPLE_CONEFLOWER.get()), new double[] {
+        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.PURPLE_CONEFLOWER.get()), new OutputItemStackWithPercentages[] {
+                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.PURPLE_CONEFLOWER.get()), new double[] {
                         1., 1., 1., .67, .33, .33, .15
                 })
         }, 16000, "purple_coneflower", "pruple_coneflower");
 
-        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.HYACINTH_FLOWERS.get()), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(RuBlocks.HYACINTH_FLOWERS.get()), new double[] {
+        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.HYACINTH_FLOWERS.get()), new OutputItemStackWithPercentages[] {
+                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.HYACINTH_FLOWERS.get()), new double[] {
                         1., 1., 1., .67, .33, .33, .15
                 })
         }, 16000, "hyacinth_flowers", "hyacinth_flowers");
 
-        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.BLUE_MAGNOLIA_FLOWERS.get()), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(RuBlocks.BLUE_MAGNOLIA_FLOWERS.get()), new double[] {
+        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.BLUE_MAGNOLIA_FLOWERS.get()), new OutputItemStackWithPercentages[] {
+                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.BLUE_MAGNOLIA_FLOWERS.get()), new double[] {
                         1., 1., 1., .67, .33, .33, .15
                 })
         }, 16000, "blue_magnolia_flowers", "blue_magnolia_flowers");
 
-        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.PINK_MAGNOLIA_FLOWERS.get()), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(RuBlocks.PINK_MAGNOLIA_FLOWERS.get()), new double[] {
+        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.PINK_MAGNOLIA_FLOWERS.get()), new OutputItemStackWithPercentages[] {
+                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.PINK_MAGNOLIA_FLOWERS.get()), new double[] {
                         1., 1., 1., .67, .33, .33, .15
                 })
         }, 16000, "pink_magnolia_flowers", "pink_magnolia_flowers");
 
-        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.WHITE_MAGNOLIA_FLOWERS.get()), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(RuBlocks.WHITE_MAGNOLIA_FLOWERS.get()), new double[] {
+        addPlantGrowthChamberRecipe(output, Ingredient.of(RuBlocks.WHITE_MAGNOLIA_FLOWERS.get()), new OutputItemStackWithPercentages[] {
+                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.WHITE_MAGNOLIA_FLOWERS.get()), new double[] {
                         1., 1., 1., .67, .33, .33, .15
                 })
         }, 16000, "white_magnolia_flowers", "white_magnolia_flowers");
 
-        addPlantGrowthChamberRecipe(output, Ingredient.of(RuItems.SALMONBERRY.get()), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(RuItems.SALMONBERRY.get()), new double[] {
+        addPlantGrowthChamberRecipe(output, Ingredient.of(RuItems.SALMONBERRY.get()), new OutputItemStackWithPercentages[] {
+                new OutputItemStackWithPercentages(new ItemStack(RuItems.SALMONBERRY.get()), new double[] {
                         1., 1., .33, .17
                 })
         }, 16000, "salmonberry", "salmonberry");
@@ -390,14 +390,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void addBasicFlowerGrowingRecipe(RecipeOutput recipeOutput, ItemLike flowerItem,
                                                     String outputName) {
-        addPlantGrowthChamberRecipe(recipeOutput, Ingredient.of(flowerItem), new PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] {
-                new PlantGrowthChamberRecipe.OutputItemStackWithPercentages(new ItemStack(flowerItem), new double[] {
+        addPlantGrowthChamberRecipe(recipeOutput, Ingredient.of(flowerItem), new OutputItemStackWithPercentages[] {
+                new OutputItemStackWithPercentages(new ItemStack(flowerItem), new double[] {
                         1., 1., .33
                 })
         }, 16000, outputName, getItemName(flowerItem));
     }
     private void addPlantGrowthChamberRecipe(RecipeOutput recipeOutput, Ingredient input,
-                                             PlantGrowthChamberRecipe.OutputItemStackWithPercentages[] outputs, int ticks,
+                                             OutputItemStackWithPercentages[] outputs, int ticks,
                                              String outputName, String recipeIngredientName) {
         ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "growing/" +
                 outputName + "_from_growing_" + recipeIngredientName);
