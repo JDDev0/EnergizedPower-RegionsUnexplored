@@ -4,5 +4,5 @@ accessible    method    net/minecraft/recipe/Ingredient    ofEntries    (Ljava/u
 accessible    class    net/minecraft/recipe/Ingredient$StackEntry
 accessible    method    net/minecraft/recipe/Ingredient$StackEntry    <init>    (Lnet/minecraft/item/ItemStack;)V
 accessible    class    net/minecraft/recipe/Ingredient$TagEntry
-accessible    method    net/minecraft/recipe/Ingredient$TagEntry    <init>    (Lnet/minecraft/registry/tag/TagKey;)V
+accessible    method    net/minecraft/recipe/Ingredient$TagEntry    <init>    (Lnet/minecraft/tag/TagKey;)V
 accessible    class    net/minecraft/recipe/Ingredient$Entry

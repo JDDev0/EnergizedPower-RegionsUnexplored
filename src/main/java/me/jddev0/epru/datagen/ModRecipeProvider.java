@@ -1,15 +1,13 @@
 package me.jddev0.epru.datagen;
 
-import io.github.uhq_games.regions_unexplored.RegionsUnexplored;
-import io.github.uhq_games.regions_unexplored.block.RuBlocks;
-import io.github.uhq_games.regions_unexplored.data.tags.RuTags;
-import io.github.uhq_games.regions_unexplored.item.RuItems;
 import me.jddev0.ep.datagen.recipe.CrusherFinishedRecipe;
 import me.jddev0.ep.datagen.recipe.PlantGrowthChamberFinishedRecipe;
 import me.jddev0.ep.datagen.recipe.SawmillFinishedRecipe;
+import me.jddev0.ep.util.ItemStackUtils;
 import me.jddev0.epru.EnergizedPowerRUMod;
 import me.jddev0.ep.recipe.*;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import me.jddev0.epru.registry.tags.CompatibilityItemTags;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.item.ItemConvertible;
@@ -17,318 +15,186 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
+import net.regions_unexplored.RegionsUnexploredMod;
+import net.regions_unexplored.block.RegionsUnexploredBlocks;
+import net.regions_unexplored.item.RegionsUnexploredItems;
 
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
-    private static final String REGIONS_UNEXPLORED_MOD_ID = RegionsUnexplored.MODID;
+    private static final String REGIONS_UNEXPLORED_MOD_ID = RegionsUnexploredMod.MOD_ID;
     private static final String PATH_PREFIX = "compat/" + REGIONS_UNEXPLORED_MOD_ID + "/";
 
-    public ModRecipeProvider(FabricDataOutput output) {
+    public ModRecipeProvider(FabricDataGenerator output) {
         super(output);
     }
 
     @Override
-    public void generate(Consumer<RecipeJsonProvider> output) {
+    public void generateRecipes(Consumer<RecipeJsonProvider> output) {
         buildCrusherRecipes(output);
         buildSawmillRecipes(output);
         buildPlantGrowthChamberRecipes(output);
     }
 
     private void buildCrusherRecipes(Consumer<RecipeJsonProvider> output) {
-        addCrusherRecipe(output, Ingredient.ofItems(RuBlocks.MOSSY_STONE), new ItemStack(Items.MOSSY_COBBLESTONE),
+        addCrusherRecipe(output, Ingredient.ofItems(RegionsUnexploredBlocks.MOSSY_STONE), new ItemStack(Items.MOSSY_COBBLESTONE),
                 "mossy_stone");
 
-        addCrusherRecipe(output, Ingredient.ofItems(RuBlocks.CHALK_BRICKS, RuBlocks.POLISHED_CHALK,
-                        RuBlocks.CHALK_PILLAR), new ItemStack(RuBlocks.CHALK),
+        addCrusherRecipe(output, Ingredient.ofItems(RegionsUnexploredBlocks.CHALK_BRICKS, RegionsUnexploredBlocks.POLISHED_CHALK,
+                        RegionsUnexploredBlocks.CHALK_PILLAR), new ItemStack(RegionsUnexploredBlocks.CHALK),
                 "chalk_variants");
     }
 
     private void buildSawmillRecipes(Consumer<RecipeJsonProvider> output) {
-        addSawmillRecipe(output, Ingredient.fromTag(RuTags.BRANCHES_ITEM), new ItemStack(Items.STICK, 6), 1,
+        addSawmillRecipe(output, Ingredient.fromTag(CompatibilityItemTags.BRANCHES), new ItemStack(Items.STICK, 6), 1,
                 getItemPath(Items.STICK), "_branches");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.BAOBAB_PLANKS),
-                Ingredient.fromTag(RuTags.BAOBAB_LOGS_ITEM), Ingredient.ofItems(RuBlocks.BAOBAB_FENCE),
-                Ingredient.ofItems(RuBlocks.BAOBAB_FENCE_GATE), Ingredient.ofItems(RuBlocks.BAOBAB_DOOR),
-                Ingredient.ofItems(RuBlocks.BAOBAB_TRAPDOOR), Ingredient.ofItems(RuBlocks.BAOBAB_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.BAOBAB_SIGN), Ingredient.ofItems(RuItems.BAOBAB_BOAT),
-                Ingredient.ofItems(RuItems.BAOBAB_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.BAOBAB_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.BAOBAB_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.BAOBAB_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.BAOBAB_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.BAOBAB_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.BAOBAB_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.BAOBAB_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.BAOBAB_SIGN), Ingredient.ofItems(RegionsUnexploredItems.BAOBAB_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.BAOBAB_CHEST_BOAT),
                 false, "baobab");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.BLACKWOOD_PLANKS),
-                Ingredient.fromTag(RuTags.BLACKWOOD_LOGS_ITEM), Ingredient.ofItems(RuBlocks.BLACKWOOD_FENCE),
-                Ingredient.ofItems(RuBlocks.BLACKWOOD_FENCE_GATE), Ingredient.ofItems(RuBlocks.BLACKWOOD_DOOR),
-                Ingredient.ofItems(RuBlocks.BLACKWOOD_TRAPDOOR), Ingredient.ofItems(RuBlocks.BLACKWOOD_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.BLACKWOOD_SIGN), Ingredient.ofItems(RuItems.BLACKWOOD_BOAT),
-                Ingredient.ofItems(RuItems.BLACKWOOD_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.BLACKWOOD_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.BLACKWOOD_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.BLACKWOOD_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.BLACKWOOD_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.BLACKWOOD_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.BLACKWOOD_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.BLACKWOOD_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.BLACKWOOD_SIGN), Ingredient.ofItems(RegionsUnexploredItems.BLACKWOOD_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.BLACKWOOD_CHEST_BOAT),
                 false, "blackwood");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.CYPRESS_PLANKS),
-                Ingredient.fromTag(RuTags.CYPRESS_LOGS_ITEM), Ingredient.ofItems(RuBlocks.CYPRESS_FENCE),
-                Ingredient.ofItems(RuBlocks.CYPRESS_FENCE_GATE), Ingredient.ofItems(RuBlocks.CYPRESS_DOOR),
-                Ingredient.ofItems(RuBlocks.CYPRESS_TRAPDOOR), Ingredient.ofItems(RuBlocks.CYPRESS_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.CYPRESS_SIGN), Ingredient.ofItems(RuItems.CYPRESS_BOAT),
-                Ingredient.ofItems(RuItems.CYPRESS_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.CHERRY_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.CHERRY_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.CHERRY_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.CHERRY_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.CHERRY_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.CHERRY_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.CHERRY_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.CHERRY_SIGN), Ingredient.ofItems(RegionsUnexploredItems.CHERRY_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.CHERRY_CHEST_BOAT),
+                false, "cherry");
+
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.CYPRESS_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.CYPRESS_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.CYPRESS_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.CYPRESS_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.CYPRESS_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.CYPRESS_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.CYPRESS_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.CYPRESS_SIGN), Ingredient.ofItems(RegionsUnexploredItems.CYPRESS_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.CYPRESS_CHEST_BOAT),
                 false, "cypress");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.DEAD_PLANKS),
-                Ingredient.fromTag(RuTags.DEAD_LOGS_ITEM), Ingredient.ofItems(RuBlocks.DEAD_FENCE),
-                Ingredient.ofItems(RuBlocks.DEAD_FENCE_GATE), Ingredient.ofItems(RuBlocks.DEAD_DOOR),
-                Ingredient.ofItems(RuBlocks.DEAD_TRAPDOOR), Ingredient.ofItems(RuBlocks.DEAD_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.DEAD_SIGN), Ingredient.ofItems(RuItems.DEAD_BOAT),
-                Ingredient.ofItems(RuItems.DEAD_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.DEAD_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.DEAD_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.DEAD_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.DEAD_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.DEAD_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.DEAD_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.DEAD_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.DEAD_SIGN), Ingredient.ofItems(RegionsUnexploredItems.DEAD_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.DEAD_CHEST_BOAT),
                 false, "dead");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.EUCALYPTUS_PLANKS),
-                Ingredient.fromTag(RuTags.EUCALYPTUS_LOGS_ITEM), Ingredient.ofItems(RuBlocks.EUCALYPTUS_FENCE),
-                Ingredient.ofItems(RuBlocks.EUCALYPTUS_FENCE_GATE), Ingredient.ofItems(RuBlocks.EUCALYPTUS_DOOR),
-                Ingredient.ofItems(RuBlocks.EUCALYPTUS_TRAPDOOR), Ingredient.ofItems(RuBlocks.EUCALYPTUS_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.EUCALYPTUS_SIGN), Ingredient.ofItems(RuItems.EUCALYPTUS_BOAT),
-                Ingredient.ofItems(RuItems.EUCALYPTUS_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.EUCALYPTUS_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.EUCALYPTUS_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.EUCALYPTUS_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.EUCALYPTUS_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.EUCALYPTUS_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.EUCALYPTUS_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.EUCALYPTUS_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.EUCALYPTUS_SIGN), Ingredient.ofItems(RegionsUnexploredItems.EUCALYPTUS_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.EUCALYPTUS_CHEST_BOAT),
                 false, "eucalyptus");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.JOSHUA_PLANKS),
-                Ingredient.fromTag(RuTags.JOSHUA_LOGS_ITEM), Ingredient.ofItems(RuBlocks.JOSHUA_FENCE),
-                Ingredient.ofItems(RuBlocks.JOSHUA_FENCE_GATE), Ingredient.ofItems(RuBlocks.JOSHUA_DOOR),
-                Ingredient.ofItems(RuBlocks.JOSHUA_TRAPDOOR), Ingredient.ofItems(RuBlocks.JOSHUA_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.JOSHUA_SIGN), Ingredient.ofItems(RuItems.JOSHUA_BOAT),
-                Ingredient.ofItems(RuItems.JOSHUA_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.JOSHUA_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.JOSHUA_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.JOSHUA_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.JOSHUA_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.JOSHUA_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.JOSHUA_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.JOSHUA_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.JOSHUA_SIGN), Ingredient.ofItems(RegionsUnexploredItems.JOSHUA_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.JOSHUA_CHEST_BOAT),
                 false, "joshua");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.KAPOK_PLANKS),
-                Ingredient.fromTag(RuTags.KAPOK_LOGS_ITEM), Ingredient.ofItems(RuBlocks.KAPOK_FENCE),
-                Ingredient.ofItems(RuBlocks.KAPOK_FENCE_GATE), Ingredient.ofItems(RuBlocks.KAPOK_DOOR),
-                Ingredient.ofItems(RuBlocks.KAPOK_TRAPDOOR), Ingredient.ofItems(RuBlocks.KAPOK_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.KAPOK_SIGN), Ingredient.ofItems(RuItems.KAPOK_BOAT),
-                Ingredient.ofItems(RuItems.KAPOK_CHEST_BOAT),
-                false, "kapok");
-
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.LARCH_PLANKS),
-                Ingredient.fromTag(RuTags.LARCH_LOGS_ITEM), Ingredient.ofItems(RuBlocks.LARCH_FENCE),
-                Ingredient.ofItems(RuBlocks.LARCH_FENCE_GATE), Ingredient.ofItems(RuBlocks.LARCH_DOOR),
-                Ingredient.ofItems(RuBlocks.LARCH_TRAPDOOR), Ingredient.ofItems(RuBlocks.LARCH_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.LARCH_SIGN), Ingredient.ofItems(RuItems.LARCH_BOAT),
-                Ingredient.ofItems(RuItems.LARCH_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.LARCH_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.LARCH_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.LARCH_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.LARCH_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.LARCH_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.LARCH_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.LARCH_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.LARCH_SIGN), Ingredient.ofItems(RegionsUnexploredItems.LARCH_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.LARCH_CHEST_BOAT),
                 false, "larch");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.MAGNOLIA_PLANKS),
-                Ingredient.fromTag(RuTags.MAGNOLIA_LOGS_ITEM), Ingredient.ofItems(RuBlocks.MAGNOLIA_FENCE),
-                Ingredient.ofItems(RuBlocks.MAGNOLIA_FENCE_GATE), Ingredient.ofItems(RuBlocks.MAGNOLIA_DOOR),
-                Ingredient.ofItems(RuBlocks.MAGNOLIA_TRAPDOOR), Ingredient.ofItems(RuBlocks.MAGNOLIA_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.MAGNOLIA_SIGN), Ingredient.ofItems(RuItems.MAGNOLIA_BOAT),
-                Ingredient.ofItems(RuItems.MAGNOLIA_CHEST_BOAT),
-                false, "magnolia");
-
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.MAPLE_PLANKS),
-                Ingredient.fromTag(RuTags.MAPLE_LOGS_ITEM), Ingredient.ofItems(RuBlocks.MAPLE_FENCE),
-                Ingredient.ofItems(RuBlocks.MAPLE_FENCE_GATE), Ingredient.ofItems(RuBlocks.MAPLE_DOOR),
-                Ingredient.ofItems(RuBlocks.MAPLE_TRAPDOOR), Ingredient.ofItems(RuBlocks.MAPLE_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.MAPLE_SIGN), Ingredient.ofItems(RuItems.MAPLE_BOAT),
-                Ingredient.ofItems(RuItems.MAPLE_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.MAPLE_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.MAPLE_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.MAPLE_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.MAPLE_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.MAPLE_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.MAPLE_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.MAPLE_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.MAPLE_SIGN), Ingredient.ofItems(RegionsUnexploredItems.MAPLE_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.MAPLE_CHEST_BOAT),
                 false, "maple");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.MAUVE_PLANKS),
-                Ingredient.fromTag(RuTags.MAUVE_LOGS_ITEM), Ingredient.ofItems(RuBlocks.MAUVE_FENCE),
-                Ingredient.ofItems(RuBlocks.MAUVE_FENCE_GATE), Ingredient.ofItems(RuBlocks.MAUVE_DOOR),
-                Ingredient.ofItems(RuBlocks.MAUVE_TRAPDOOR), Ingredient.ofItems(RuBlocks.MAUVE_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.MAUVE_SIGN), Ingredient.ofItems(RuItems.MAUVE_BOAT),
-                Ingredient.ofItems(RuItems.MAUVE_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.MAUVE_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.MAUVE_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.MAUVE_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.MAUVE_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.MAUVE_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.MAUVE_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.MAUVE_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.MAUVE_SIGN), Ingredient.ofItems(RegionsUnexploredItems.MAUVE_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.MAUVE_CHEST_BOAT),
                 false, "mauve");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.PALM_PLANKS),
-                Ingredient.fromTag(RuTags.PALM_LOGS_ITEM), Ingredient.ofItems(RuBlocks.PALM_FENCE),
-                Ingredient.ofItems(RuBlocks.PALM_FENCE_GATE), Ingredient.ofItems(RuBlocks.PALM_DOOR),
-                Ingredient.ofItems(RuBlocks.PALM_TRAPDOOR), Ingredient.ofItems(RuBlocks.PALM_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.PALM_SIGN), Ingredient.ofItems(RuItems.PALM_BOAT),
-                Ingredient.ofItems(RuItems.PALM_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.PALM_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.PALM_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.PALM_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.PALM_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.PALM_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.PALM_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.PALM_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.PALM_SIGN), Ingredient.ofItems(RegionsUnexploredItems.PALM_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.PALM_CHEST_BOAT),
                 false, "palm");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.PINE_PLANKS),
-                Ingredient.fromTag(RuTags.PINE_LOGS_ITEM), Ingredient.ofItems(RuBlocks.PINE_FENCE),
-                Ingredient.ofItems(RuBlocks.PINE_FENCE_GATE), Ingredient.ofItems(RuBlocks.PINE_DOOR),
-                Ingredient.ofItems(RuBlocks.PINE_TRAPDOOR), Ingredient.ofItems(RuBlocks.PINE_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.PINE_SIGN), Ingredient.ofItems(RuItems.PINE_BOAT),
-                Ingredient.ofItems(RuItems.PINE_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.PINE_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.PINE_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.PINE_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.PINE_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.PINE_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.PINE_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.PINE_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.PINE_SIGN), Ingredient.ofItems(RegionsUnexploredItems.PINE_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.PINE_CHEST_BOAT),
                 false, "pine");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.REDWOOD_PLANKS),
-                Ingredient.fromTag(RuTags.REDWOOD_LOGS_ITEM), Ingredient.ofItems(RuBlocks.REDWOOD_FENCE),
-                Ingredient.ofItems(RuBlocks.REDWOOD_FENCE_GATE), Ingredient.ofItems(RuBlocks.REDWOOD_DOOR),
-                Ingredient.ofItems(RuBlocks.REDWOOD_TRAPDOOR), Ingredient.ofItems(RuBlocks.REDWOOD_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.REDWOOD_SIGN), Ingredient.ofItems(RuItems.REDWOOD_BOAT),
-                Ingredient.ofItems(RuItems.REDWOOD_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.REDWOOD_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.REDWOOD_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.REDWOOD_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.REDWOOD_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.REDWOOD_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.REDWOOD_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.REDWOOD_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.REDWOOD_SIGN), Ingredient.ofItems(RegionsUnexploredItems.REDWOOD_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.REDWOOD_CHEST_BOAT),
                 false, "redwood");
 
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.SOCOTRA_PLANKS),
-                Ingredient.fromTag(RuTags.SOCOTRA_LOGS_ITEM), Ingredient.ofItems(RuBlocks.SOCOTRA_FENCE),
-                Ingredient.ofItems(RuBlocks.SOCOTRA_FENCE_GATE), Ingredient.ofItems(RuBlocks.SOCOTRA_DOOR),
-                Ingredient.ofItems(RuBlocks.SOCOTRA_TRAPDOOR), Ingredient.ofItems(RuBlocks.SOCOTRA_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.SOCOTRA_SIGN), Ingredient.ofItems(RuItems.SOCOTRA_BOAT),
-                Ingredient.ofItems(RuItems.SOCOTRA_CHEST_BOAT),
-                false, "socotra");
-
-        addBasicWoodSawmillRecipe(output, new ItemStack(RuBlocks.WILLOW_PLANKS),
-                Ingredient.fromTag(RuTags.WILLOW_LOGS_ITEM), Ingredient.ofItems(RuBlocks.WILLOW_FENCE),
-                Ingredient.ofItems(RuBlocks.WILLOW_FENCE_GATE), Ingredient.ofItems(RuBlocks.WILLOW_DOOR),
-                Ingredient.ofItems(RuBlocks.WILLOW_TRAPDOOR), Ingredient.ofItems(RuBlocks.WILLOW_PRESSURE_PLATE),
-                Ingredient.ofItems(RuBlocks.WILLOW_SIGN), Ingredient.ofItems(RuItems.WILLOW_BOAT),
-                Ingredient.ofItems(RuItems.WILLOW_CHEST_BOAT),
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.WILLOW_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.WILLOW_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.WILLOW_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.WILLOW_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.WILLOW_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.WILLOW_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.WILLOW_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.WILLOW_SIGN), Ingredient.ofItems(RegionsUnexploredItems.WILLOW_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.WILLOW_CHEST_BOAT),
                 false, "willow");
 
-        addSawmillRecipe(output, Ingredient.fromTag(RuTags.BLUE_BIOSHROOM_LOGS_ITEM),
-                new ItemStack(RuBlocks.BLUE_BIOSHROOM_PLANKS, 6),
-                1, "blue_bioshroom_planks", "blue_bioshroom_stems");
-        addBasicWoodWithoutLogsAndBoatsSawmillRecipe(output, new ItemStack(RuBlocks.BLUE_BIOSHROOM_PLANKS),
-                Ingredient.ofItems(RuBlocks.BLUE_BIOSHROOM_FENCE), Ingredient.ofItems(RuBlocks.BLUE_BIOSHROOM_FENCE_GATE),
-                Ingredient.ofItems(RuBlocks.BLUE_BIOSHROOM_DOOR), Ingredient.ofItems(RuBlocks.BLUE_BIOSHROOM_TRAPDOOR),
-                Ingredient.ofItems(RuBlocks.BLUE_BIOSHROOM_PRESSURE_PLATE), Ingredient.ofItems(RuBlocks.BLUE_BIOSHROOM_SIGN),
-                "blue_bioshroom");
-
-        addSawmillRecipe(output, Ingredient.fromTag(RuTags.GREEN_BIOSHROOM_LOGS_ITEM),
-                new ItemStack(RuBlocks.GREEN_BIOSHROOM_PLANKS, 6),
-                1, "green_bioshroom_planks", "green_bioshroom_stems");
-        addBasicWoodWithoutLogsAndBoatsSawmillRecipe(output, new ItemStack(RuBlocks.GREEN_BIOSHROOM_PLANKS),
-                Ingredient.ofItems(RuBlocks.GREEN_BIOSHROOM_FENCE), Ingredient.ofItems(RuBlocks.GREEN_BIOSHROOM_FENCE_GATE),
-                Ingredient.ofItems(RuBlocks.GREEN_BIOSHROOM_DOOR), Ingredient.ofItems(RuBlocks.GREEN_BIOSHROOM_TRAPDOOR),
-                Ingredient.ofItems(RuBlocks.GREEN_BIOSHROOM_PRESSURE_PLATE), Ingredient.ofItems(RuBlocks.GREEN_BIOSHROOM_SIGN),
-                "green_bioshroom");
-
-        addSawmillRecipe(output, Ingredient.fromTag(RuTags.PINK_BIOSHROOM_LOGS_ITEM),
-                new ItemStack(RuBlocks.PINK_BIOSHROOM_PLANKS, 6),
-                1, "pink_bioshroom_planks", "pink_bioshroom_stems");
-        addBasicWoodWithoutLogsAndBoatsSawmillRecipe(output, new ItemStack(RuBlocks.PINK_BIOSHROOM_PLANKS),
-                Ingredient.ofItems(RuBlocks.PINK_BIOSHROOM_FENCE), Ingredient.ofItems(RuBlocks.PINK_BIOSHROOM_FENCE_GATE),
-                Ingredient.ofItems(RuBlocks.PINK_BIOSHROOM_DOOR), Ingredient.ofItems(RuBlocks.PINK_BIOSHROOM_TRAPDOOR),
-                Ingredient.ofItems(RuBlocks.PINK_BIOSHROOM_PRESSURE_PLATE), Ingredient.ofItems(RuBlocks.PINK_BIOSHROOM_SIGN),
-                "pink_bioshroom");
-
-        addSawmillRecipe(output, Ingredient.fromTag(RuTags.YELLOW_BIOSHROOM_LOGS_ITEM),
-                new ItemStack(RuBlocks.YELLOW_BIOSHROOM_PLANKS, 6),
-                1, "yellow_bioshroom_planks", "yellow_bioshroom_stems");
-        addBasicWoodWithoutLogsAndBoatsSawmillRecipe(output, new ItemStack(RuBlocks.YELLOW_BIOSHROOM_PLANKS),
-                Ingredient.ofItems(RuBlocks.YELLOW_BIOSHROOM_FENCE), Ingredient.ofItems(RuBlocks.YELLOW_BIOSHROOM_FENCE_GATE),
-                Ingredient.ofItems(RuBlocks.YELLOW_BIOSHROOM_DOOR), Ingredient.ofItems(RuBlocks.YELLOW_BIOSHROOM_TRAPDOOR),
-                Ingredient.ofItems(RuBlocks.YELLOW_BIOSHROOM_PRESSURE_PLATE), Ingredient.ofItems(RuBlocks.YELLOW_BIOSHROOM_SIGN),
-                "yellow_bioshroom");
-
-        addSawmillRecipe(output, Ingredient.fromTag(RuTags.BRIMWOOD_LOGS_ITEM),
-                new ItemStack(RuBlocks.BRIMWOOD_PLANKS, 6),
-                1, "brimwood_planks", "brimwood_logs");
-        addBasicWoodWithoutLogsAndBoatsSawmillRecipe(output, new ItemStack(RuBlocks.BRIMWOOD_PLANKS),
-                Ingredient.ofItems(RuBlocks.BRIMWOOD_FENCE), Ingredient.ofItems(RuBlocks.BRIMWOOD_FENCE_GATE),
-                Ingredient.ofItems(RuBlocks.BRIMWOOD_DOOR), Ingredient.ofItems(RuBlocks.BRIMWOOD_TRAPDOOR),
-                Ingredient.ofItems(RuBlocks.BRIMWOOD_PRESSURE_PLATE), Ingredient.ofItems(RuBlocks.BRIMWOOD_SIGN),
-                "brimwood");
-
-        addSawmillRecipe(output, Ingredient.fromTag(RuTags.COBALT_LOGS_ITEM),
-                new ItemStack(RuBlocks.COBALT_PLANKS, 6),
-                1, "cobalt_planks", "cobalt_logs");
-        addBasicWoodWithoutLogsAndBoatsSawmillRecipe(output, new ItemStack(RuBlocks.COBALT_PLANKS),
-                Ingredient.ofItems(RuBlocks.COBALT_FENCE), Ingredient.ofItems(RuBlocks.COBALT_FENCE_GATE),
-                Ingredient.ofItems(RuBlocks.COBALT_DOOR), Ingredient.ofItems(RuBlocks.COBALT_TRAPDOOR),
-                Ingredient.ofItems(RuBlocks.COBALT_PRESSURE_PLATE), Ingredient.ofItems(RuBlocks.COBALT_SIGN),
-                "cobalt");
+        addBasicWoodSawmillRecipe(output, new ItemStack(RegionsUnexploredBlocks.SCULKWOOD_PLANKS),
+                Ingredient.fromTag(CompatibilityItemTags.SCULKWOOD_LOGS), Ingredient.ofItems(RegionsUnexploredBlocks.SCULKWOOD_FENCE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.SCULKWOOD_FENCE_GATE), Ingredient.ofItems(RegionsUnexploredBlocks.SCULKWOOD_DOOR),
+                Ingredient.ofItems(RegionsUnexploredBlocks.SCULKWOOD_TRAPDOOR), Ingredient.ofItems(RegionsUnexploredBlocks.SCULKWOOD_PRESSURE_PLATE),
+                Ingredient.ofItems(RegionsUnexploredBlocks.SCULKWOOD_SIGN), Ingredient.ofItems(RegionsUnexploredItems.SCULKWOOD_BOAT),
+                Ingredient.ofItems(RegionsUnexploredItems.SCULKWOOD_CHEST_BOAT),
+                false, "sculkwood");
     }
 
     private void buildPlantGrowthChamberRecipes(Consumer<RecipeJsonProvider> output) {
-        addBasicFlowerGrowingRecipe(output, RuBlocks.ASTER, "aster");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.BLEEDING_HEART, "beleeding_heart");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.DAISY, "daisy");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.DORCEL, "dorcel");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.FELICIA_DAISY, "felicia_daisy");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.FIREWEED, "fireweed");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.GLISTERING_BLOOM, "glistering_bloom");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.HIBISCUS, "hibiscus");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.HYSSOP, "hyssop");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.MALLOW, "mallow");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.POPPY_BUSH, "poppy_bush");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.SALMON_POPPY_BUSH, "salmon_poppy_bush");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.TSUBAKI, "tsubaki");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.WARATAH, "waratah");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.WHITE_TRILLIUM, "white_trillium");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.WILTING_TRILLIUM, "wilting_trillium");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.BLUE_LUPINE, "blue_lupine");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.PINK_LUPINE, "pink_lupine");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.PURPLE_LUPINE, "purple_lupine");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.RED_LUPINE, "red_lupine");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.YELLOW_LUPINE, "yellow_lupine");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.COBALT_EARLIGHT, "cobalt_earlight");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.WHITE_SNOWBELLE, "white_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.LIGHT_GRAY_SNOWBELLE, "light_gray_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.GRAY_SNOWBELLE, "gray_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.RED_SNOWBELLE, "red_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.ORANGE_SNOWBELLE, "orange_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.YELLOW_SNOWBELLE, "yellow_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.LIME_SNOWBELLE, "lime_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.GREEN_SNOWBELLE, "green_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.CYAN_SNOWBELLE, "cyan_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.LIGHT_BLUE_SNOWBELLE, "light_blue_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.BLUE_SNOWBELLE, "blue_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.PURPLE_SNOWBELLE, "purple_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.MAGENTA_SNOWBELLE, "magenta_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.PINK_SNOWBELLE, "pink_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.BROWN_SNOWBELLE, "brown_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.BLACK_SNOWBELLE, "black_snowbelle");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.CAVE_HYSSOP, "cave_hyssop");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.DAISY, "daisy");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.DORCEL, "dorcel");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.FELICIA_DAISY, "felicia_daisy");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.FIREWEED, "fireweed");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.HYSSOP, "hyssop");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.POPPY_BUSH, "poppy_bush");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.TSUBAKI, "tsubaki");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.WARATAH, "waratah");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.WHITE_TRILLIUM, "white_trillium");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.WILTING_TRILLIUM, "wilting_trillium");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.BLUE_LUPINE, "blue_lupine");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.PINK_LUPINE, "pink_lupine");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.PURPLE_LUPINE, "purple_lupine");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.RED_LUPINE, "red_lupine");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.YELLOW_LUPINE, "yellow_lupine");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.COBALT_EARLIGHT, "cobalt_earlight");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.CAVE_HYSSOP, "cave_hyssop");
 
-        addBasicFlowerGrowingRecipe(output, RuBlocks.BARLEY, "barley");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.CATTAIL, "cattail");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.DAY_LILY, "day_lily");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.MEADOW_SAGE, "meadow_sage");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.TASSEL, "tassel");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.GLISTER_BULB, "glister_bulb");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.GLISTER_SPIRE, "glister_spire");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.MYCOTOXIC_DAISY, "mycotoxic_daisy");
-        addBasicFlowerGrowingRecipe(output, RuBlocks.TALL_COBALT_EARLIGHT, "tall_cobalt_earlight");
-
-        addPlantGrowthChamberRecipe(output, Ingredient.ofItems(RuBlocks.CLOVER), new OutputItemStackWithPercentages[] {
-                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.CLOVER), new double[] {
-                        1., 1., 1., .67, .33, .33, .15
-                })
-        }, 16000, "clover", "clover");
-
-        addPlantGrowthChamberRecipe(output, Ingredient.ofItems(RuBlocks.ORANGE_CONEFLOWER), new OutputItemStackWithPercentages[] {
-                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.ORANGE_CONEFLOWER), new double[] {
-                        1., 1., 1., .67, .33, .33, .15
-                })
-        }, 16000, "orange_coneflower", "orange_coneflower");
-
-        addPlantGrowthChamberRecipe(output, Ingredient.ofItems(RuBlocks.PURPLE_CONEFLOWER), new OutputItemStackWithPercentages[] {
-                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.PURPLE_CONEFLOWER), new double[] {
-                        1., 1., 1., .67, .33, .33, .15
-                })
-        }, 16000, "purple_coneflower", "pruple_coneflower");
-
-        addPlantGrowthChamberRecipe(output, Ingredient.ofItems(RuBlocks.HYACINTH_FLOWERS), new OutputItemStackWithPercentages[] {
-                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.HYACINTH_FLOWERS), new double[] {
-                        1., 1., 1., .67, .33, .33, .15
-                })
-        }, 16000, "hyacinth_flowers", "hyacinth_flowers");
-
-        addPlantGrowthChamberRecipe(output, Ingredient.ofItems(RuBlocks.BLUE_MAGNOLIA_FLOWERS), new OutputItemStackWithPercentages[] {
-                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.BLUE_MAGNOLIA_FLOWERS), new double[] {
-                        1., 1., 1., .67, .33, .33, .15
-                })
-        }, 16000, "blue_magnolia_flowers", "blue_magnolia_flowers");
-
-        addPlantGrowthChamberRecipe(output, Ingredient.ofItems(RuBlocks.PINK_MAGNOLIA_FLOWERS), new OutputItemStackWithPercentages[] {
-                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.PINK_MAGNOLIA_FLOWERS), new double[] {
-                        1., 1., 1., .67, .33, .33, .15
-                })
-        }, 16000, "pink_magnolia_flowers", "pink_magnolia_flowers");
-
-        addPlantGrowthChamberRecipe(output, Ingredient.ofItems(RuBlocks.WHITE_MAGNOLIA_FLOWERS), new OutputItemStackWithPercentages[] {
-                new OutputItemStackWithPercentages(new ItemStack(RuBlocks.WHITE_MAGNOLIA_FLOWERS), new double[] {
-                        1., 1., 1., .67, .33, .33, .15
-                })
-        }, 16000, "white_magnolia_flowers", "white_magnolia_flowers");
-
-        addPlantGrowthChamberRecipe(output, Ingredient.ofItems(RuItems.SALMONBERRY), new OutputItemStackWithPercentages[] {
-                new OutputItemStackWithPercentages(new ItemStack(RuItems.SALMONBERRY), new double[] {
-                        1., 1., .33, .17
-                })
-        }, 16000, "salmonberry", "salmonberry");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.BARLEY, "barley");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.CATTAIL, "cattail");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.TASSEL, "tassel");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.GLISTER_BULB, "glister_bulb");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.GLISTER_SPIRE, "glister_spire");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.MYCOTOXIC_DAISY, "mycotoxic_daisy");
     }
 
     private void addCrusherRecipe(Consumer<RecipeJsonProvider> RecipeExporter, Ingredient input, ItemStack output,
@@ -348,7 +214,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                                                   Ingredient doorInput, Ingredient trapdoorInput, Ingredient pressurePlateInput,
                                                   Ingredient signInput, Ingredient boatInput, Ingredient chestBoatInput,
                                                   boolean isRaft, String woodName) {
-        addSawmillRecipe(RecipeExporter, logsInput, planksItem.copyWithCount(6), 1, getItemPath(planksItem.getItem()),
+        addSawmillRecipe(RecipeExporter, logsInput, ItemStackUtils.copyWithCount(planksItem, 6), 1, getItemPath(planksItem.getItem()),
                 woodName + "_logs");
 
         addBasicWoodWithoutLogsSawmillRecipe(RecipeExporter, planksItem, fenceInput, fenceGateInput, doorInput, trapdoorInput,
@@ -362,9 +228,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         addBasicWoodWithoutLogsAndBoatsSawmillRecipe(RecipeExporter, planksItem, fenceInput, fenceGateInput, doorInput,
                 trapdoorInput, pressurePlateInput, signInput, woodName);
 
-        addSawmillRecipe(RecipeExporter, boatInput, planksItem.copyWithCount(4), 3, getItemPath(planksItem.getItem()),
+        addSawmillRecipe(RecipeExporter, boatInput, ItemStackUtils.copyWithCount(planksItem, 4), 3, getItemPath(planksItem.getItem()),
                 woodName + (isRaft?"_raft":"_boat"));
-        addSawmillRecipe(RecipeExporter, chestBoatInput, planksItem.copyWithCount(5), 7, getItemPath(planksItem.getItem()),
+        addSawmillRecipe(RecipeExporter, chestBoatInput, ItemStackUtils.copyWithCount(planksItem, 5), 7, getItemPath(planksItem.getItem()),
                 woodName + (isRaft?"_chest_raft":"_chest_boat"));
     }
     private void addBasicWoodWithoutLogsAndBoatsSawmillRecipe(Consumer<RecipeJsonProvider> RecipeExporter, ItemStack planksItem,
@@ -373,15 +239,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                                                               Ingredient signInput, String woodName) {
         addSawmillRecipe(RecipeExporter, fenceInput, planksItem, 2, getItemPath(planksItem.getItem()),
                 woodName + "_fence");
-        addSawmillRecipe(RecipeExporter, fenceGateInput, planksItem.copyWithCount(2), 3, getItemPath(planksItem.getItem()),
+        addSawmillRecipe(RecipeExporter, fenceGateInput, ItemStackUtils.copyWithCount(planksItem, 2), 3, getItemPath(planksItem.getItem()),
                 woodName + "_fence_gate");
         addSawmillRecipe(RecipeExporter, doorInput, planksItem, 3, getItemPath(planksItem.getItem()),
                 woodName + "_door");
-        addSawmillRecipe(RecipeExporter, trapdoorInput, planksItem.copyWithCount(2), 3, getItemPath(planksItem.getItem()),
+        addSawmillRecipe(RecipeExporter, trapdoorInput, ItemStackUtils.copyWithCount(planksItem, 2), 3, getItemPath(planksItem.getItem()),
                 woodName + "_trapdoor");
         addSawmillRecipe(RecipeExporter, pressurePlateInput, planksItem, 2, getItemPath(planksItem.getItem()),
                 woodName + "_pressure_plate");
-        addSawmillRecipe(RecipeExporter, signInput, planksItem.copyWithCount(2), 1, getItemPath(planksItem.getItem()),
+        addSawmillRecipe(RecipeExporter, signInput, ItemStackUtils.copyWithCount(planksItem, 2), 1, getItemPath(planksItem.getItem()),
                 woodName + "_sign");
     }
     private void addSawmillRecipe(Consumer<RecipeJsonProvider> RecipeExporter, Ingredient input, ItemStack output,

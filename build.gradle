@@ -83,28 +83,29 @@ dependencies {
     // modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
     // Team Reborn: Fabric energy
-    include modApi('teamreborn:energy:3.0.0') {
+    include modApi('teamreborn:energy:2.3.0') {
         exclude(group: "net.fabricmc.fabric-api")
+        exclude(group: "net.fabricmc", module: "fabric-loader")
     }
 
     // Energized Power dependency
-    modCompileOnly "curse.maven:energized-power-782147:5746657"
+    modCompileOnly "curse.maven:energized-power-782147:5746647"
 
-    modLocalRuntime "curse.maven:energized-power-782147:5746657"
+    modLocalRuntime "curse.maven:energized-power-782147:5746647"
 
     // Regions Unexplored integration
-    modCompileOnly "curse.maven:regions-unexplored-659110:5558172"
+    modCompileOnly "curse.maven:regions-unexplored-659110:4470171"
 
-    modLocalRuntime "curse.maven:regions-unexplored-659110:5558172"
+    modLocalRuntime "curse.maven:regions-unexplored-659110:4470171"
     modLocalRuntime 'com.electronwill.night-config:core:3.7.4'
     modLocalRuntime 'com.electronwill.night-config:toml:3.7.3'
-    modLocalRuntime "curse.maven:terrablender-fabric-565956:5378181"
-    modLocalRuntime "curse.maven:forge-config-api-port-fabric-547434:4583000"
+    modLocalRuntime "curse.maven:terrablender-fabric-565956:4618489"
+    modLocalRuntime "curse.maven:forge-config-api-port-fabric-547434:4401535"
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    modLocalRuntime "dev.emi:emi-fabric:1.0.12+1.20.1"
+    modLocalRuntime "dev.emi:emi-fabric:1.0.4+1.19.2"
 }
 
 processResources {

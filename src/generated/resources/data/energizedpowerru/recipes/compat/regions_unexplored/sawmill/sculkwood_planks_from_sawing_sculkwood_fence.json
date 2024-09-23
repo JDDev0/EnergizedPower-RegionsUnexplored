@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:sculkwood_fence"
+  },
+  "output": {
+    "item": "regions_unexplored:sculkwood_planks"
+  },
+  "sawdustAmount": 2
+}
