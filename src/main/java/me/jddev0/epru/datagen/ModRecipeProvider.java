@@ -227,6 +227,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 Ingredient.ofItems(RuBlocks.COBALT_DOOR), Ingredient.ofItems(RuBlocks.COBALT_TRAPDOOR),
                 Ingredient.ofItems(RuBlocks.COBALT_PRESSURE_PLATE), Ingredient.ofItems(RuBlocks.COBALT_SIGN),
                 "cobalt");
+
+        addSawmillRecipe(output, Ingredient.ofItems(RuBlocks.ALPHA_LOG),
+                new ItemStack(RuBlocks.ALPHA_PLANKS).copyWithCount(6), 1,
+                getItemPath(RuBlocks.ALPHA_PLANKS.asItem()), "alpha_logs");
     }
 
     private void buildPlantGrowthChamberRecipes(RecipeExporter output) {
@@ -269,6 +273,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         addBasicFlowerGrowingRecipe(output, RuBlocks.BROWN_SNOWBELLE, "brown_snowbelle");
         addBasicFlowerGrowingRecipe(output, RuBlocks.BLACK_SNOWBELLE, "black_snowbelle");
         addBasicFlowerGrowingRecipe(output, RuBlocks.CAVE_HYSSOP, "cave_hyssop");
+
+        addBasicFlowerGrowingRecipe(output, RuBlocks.ALPHA_ROSE, "alpha_rose");
+        addBasicFlowerGrowingRecipe(output, RuBlocks.ALPHA_DANDELION, "alpha_dandelion");
 
         addBasicFlowerGrowingRecipe(output, RuBlocks.BARLEY, "barley");
         addBasicFlowerGrowingRecipe(output, RuBlocks.CATTAIL, "cattail");
