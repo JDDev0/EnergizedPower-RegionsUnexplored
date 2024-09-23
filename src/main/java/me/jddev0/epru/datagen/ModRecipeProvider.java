@@ -6,7 +6,7 @@ import me.jddev0.ep.datagen.recipe.SawmillFinishedRecipe;
 import me.jddev0.epru.EnergizedPowerRUMod;
 import me.jddev0.ep.recipe.*;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -19,6 +19,8 @@ import net.regions_unexplored.block.RuBlocks;
 import net.regions_unexplored.data.tags.RuTags;
 import net.regions_unexplored.item.RuItems;
 
+import java.util.function.Consumer;
+
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final String REGIONS_UNEXPLORED_MOD_ID = RegionsUnexploredMod.MOD_ID;
     private static final String PATH_PREFIX = "compat/" + REGIONS_UNEXPLORED_MOD_ID + "/";
@@ -28,13 +30,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput output) {
+    protected void buildRecipes(Consumer<FinishedRecipe> output) {
         buildCrusherRecipes(output);
         buildSawmillRecipes(output);
         buildPlantGrowthChamberRecipes(output);
     }
 
-    private void buildCrusherRecipes(RecipeOutput output) {
+    private void buildCrusherRecipes(Consumer<FinishedRecipe> output) {
         addCrusherRecipe(output, Ingredient.of(RuBlocks.MOSSY_STONE.get()), new ItemStack(Items.MOSSY_COBBLESTONE),
                 "mossy_stone");
 
@@ -43,7 +45,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 "chalk_variants");
     }
 
-    private void buildSawmillRecipes(RecipeOutput output) {
+    private void buildSawmillRecipes(Consumer<FinishedRecipe> output) {
         addSawmillRecipe(output, Ingredient.of(RuTags.BRANCHES_ITEM), new ItemStack(Items.STICK, 6), 1,
                 getItemName(Items.STICK), "_branches");
 
@@ -230,7 +232,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 "cobalt");
     }
 
-    private void buildPlantGrowthChamberRecipes(RecipeOutput output) {
+    private void buildPlantGrowthChamberRecipes(Consumer<FinishedRecipe> output) {
         addBasicFlowerGrowingRecipe(output, RuBlocks.ASTER.get(), "aster");
         addBasicFlowerGrowingRecipe(output, RuBlocks.BLEEDING_HEART.get(), "beleeding_heart");
         addBasicFlowerGrowingRecipe(output, RuBlocks.DAISY.get(), "daisy");
@@ -330,7 +332,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }, 16000, "salmonberry", "salmonberry");
     }
 
-    private void addCrusherRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output, String recipeIngredientName) {
+    private void addCrusherRecipe(Consumer<FinishedRecipe> recipeOutput, Ingredient input, ItemStack output, String recipeIngredientName) {
         ResourceLocation recipeId = new ResourceLocation(EnergizedPowerRUMod.MODID, PATH_PREFIX + "crusher/" +
                 getItemName(output.getItem()) + "_from_crushing_" + recipeIngredientName);
 
@@ -341,7 +343,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         recipeOutput.accept(recipe);
     }
 
-    private void addBasicWoodSawmillRecipe(RecipeOutput recipeOutput, ItemStack planksItem,
+    private void addBasicWoodSawmillRecipe(Consumer<FinishedRecipe> recipeOutput, ItemStack planksItem,
                                                   Ingredient logsInput, Ingredient fenceInput, Ingredient fenceGateInput,
                                                   Ingredient doorInput, Ingredient trapdoorInput, Ingredient pressurePlateInput,
                                                   Ingredient signInput, Ingredient boatInput, Ingredient chestBoatInput,
@@ -352,7 +354,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         addBasicWoodWithoutLogsSawmillRecipe(recipeOutput, planksItem, fenceInput, fenceGateInput, doorInput, trapdoorInput,
                 pressurePlateInput, signInput, boatInput, chestBoatInput, isRaft, woodName);
     }
-    private void addBasicWoodWithoutLogsSawmillRecipe(RecipeOutput recipeOutput, ItemStack planksItem,
+    private void addBasicWoodWithoutLogsSawmillRecipe(Consumer<FinishedRecipe> recipeOutput, ItemStack planksItem,
                                                              Ingredient fenceInput, Ingredient fenceGateInput,
                                                              Ingredient doorInput, Ingredient trapdoorInput, Ingredient pressurePlateInput,
                                                              Ingredient signInput, Ingredient boatInput, Ingredient chestBoatInput,
@@ -365,7 +367,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         addSawmillRecipe(recipeOutput, chestBoatInput, planksItem.copyWithCount(5), 7, getItemName(planksItem.getItem()),
                 woodName + (isRaft?"_chest_raft":"_chest_boat"));
     }
-    private void addBasicWoodWithoutLogsAndBoatsSawmillRecipe(RecipeOutput recipeOutput, ItemStack planksItem,
+    private void addBasicWoodWithoutLogsAndBoatsSawmillRecipe(Consumer<FinishedRecipe> recipeOutput, ItemStack planksItem,
                                                               Ingredient fenceInput, Ingredient fenceGateInput,
                                                               Ingredient doorInput, Ingredient trapdoorInput, Ingredient pressurePlateInput,
                                                               Ingredient signInput, String woodName) {
@@ -382,7 +384,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         addSawmillRecipe(recipeOutput, signInput, planksItem.copyWithCount(2), 1, getItemName(planksItem.getItem()),
                 woodName + "_sign");
     }
-    private void addSawmillRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output,
+    private void addSawmillRecipe(Consumer<FinishedRecipe> recipeOutput, Ingredient input, ItemStack output,
                                          int sawdustAmount, String outputName, String recipeIngredientName) {
         ResourceLocation recipeId = new ResourceLocation(EnergizedPowerRUMod.MODID, PATH_PREFIX + "sawmill/" +
                 outputName + "_from_sawing_" + recipeIngredientName);
@@ -394,7 +396,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         recipeOutput.accept(recipe);
     }
 
-    private void addBasicFlowerGrowingRecipe(RecipeOutput recipeOutput, ItemLike flowerItem,
+    private void addBasicFlowerGrowingRecipe(Consumer<FinishedRecipe> recipeOutput, ItemLike flowerItem,
                                                     String outputName) {
         addPlantGrowthChamberRecipe(recipeOutput, Ingredient.of(flowerItem), new OutputItemStackWithPercentages[] {
                 new OutputItemStackWithPercentages(new ItemStack(flowerItem), new double[] {
@@ -402,7 +404,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 })
         }, 16000, outputName, getItemName(flowerItem));
     }
-    private void addPlantGrowthChamberRecipe(RecipeOutput recipeOutput, Ingredient input,
+    private void addPlantGrowthChamberRecipe(Consumer<FinishedRecipe> recipeOutput, Ingredient input,
                                              OutputItemStackWithPercentages[] outputs, int ticks,
                                              String outputName, String recipeIngredientName) {
         ResourceLocation recipeId = new ResourceLocation(EnergizedPowerRUMod.MODID, PATH_PREFIX + "growing/" +
