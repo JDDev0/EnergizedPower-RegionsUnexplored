@@ -1,0 +1,11 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": {
+    "item": "regions_unexplored:alpha_log"
+  },
+  "output": {
+    "count": 6,
+    "item": "regions_unexplored:alpha_planks"
+  },
+  "sawdustAmount": 1
+}
