@@ -231,6 +231,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 Ingredient.of(RuBlocks.COBALT_DOOR.get()), Ingredient.of(RuBlocks.COBALT_TRAPDOOR.get()),
                 Ingredient.of(RuBlocks.COBALT_PRESSURE_PLATE.get()), Ingredient.of(RuBlocks.COBALT_SIGN.get()),
                 "cobalt");
+
+        addSawmillRecipe(output, Ingredient.of(RuBlocks.ALPHA_LOG.get()),
+                ItemStackUtils.copyWithCount(new ItemStack(RuBlocks.ALPHA_PLANKS.get()), 6), 1,
+                getItemName(RuBlocks.ALPHA_PLANKS.get()), "alpha_logs");
     }
 
     private void buildPlantGrowthChamberRecipes(Consumer<FinishedRecipe> output) {
@@ -273,6 +277,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         addBasicFlowerGrowingRecipe(output, RuBlocks.BROWN_SNOWBELLE.get(), "brown_snowbelle");
         addBasicFlowerGrowingRecipe(output, RuBlocks.BLACK_SNOWBELLE.get(), "black_snowbelle");
         addBasicFlowerGrowingRecipe(output, RuBlocks.CAVE_HYSSOP.get(), "cave_hyssop");
+
+        addBasicFlowerGrowingRecipe(output, RuBlocks.ALPHA_ROSE.get(), "alpha_rose");
+        addBasicFlowerGrowingRecipe(output, RuBlocks.ALPHA_DANDELION.get(), "alpha_dandelion");
 
         addBasicFlowerGrowingRecipe(output, RuBlocks.BARLEY.get(), "barley");
         addBasicFlowerGrowingRecipe(output, RuBlocks.CATTAIL.get(), "cattail");
