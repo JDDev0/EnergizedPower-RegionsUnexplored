@@ -11,12 +11,14 @@ import me.jddev0.epru.EnergizedPowerRUMod;
 import me.jddev0.ep.recipe.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
+
+import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
     private static final String REGIONS_UNEXPLORED_MOD_ID = RegionsUnexplored.MODID;
@@ -27,13 +29,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    public void generate(RecipeExporter output) {
+    public void generate(Consumer<RecipeJsonProvider> output) {
         buildCrusherRecipes(output);
         buildSawmillRecipes(output);
         buildPlantGrowthChamberRecipes(output);
     }
 
-    private void buildCrusherRecipes(RecipeExporter output) {
+    private void buildCrusherRecipes(Consumer<RecipeJsonProvider> output) {
         addCrusherRecipe(output, Ingredient.ofItems(RuBlocks.MOSSY_STONE), new ItemStack(Items.MOSSY_COBBLESTONE),
                 "mossy_stone");
 
@@ -42,7 +44,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 "chalk_variants");
     }
 
-    private void buildSawmillRecipes(RecipeExporter output) {
+    private void buildSawmillRecipes(Consumer<RecipeJsonProvider> output) {
         addSawmillRecipe(output, Ingredient.fromTag(RuTags.BRANCHES_ITEM), new ItemStack(Items.STICK, 6), 1,
                 getItemPath(Items.STICK), "_branches");
 
@@ -229,7 +231,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 "cobalt");
     }
 
-    private void buildPlantGrowthChamberRecipes(RecipeExporter output) {
+    private void buildPlantGrowthChamberRecipes(Consumer<RecipeJsonProvider> output) {
         addBasicFlowerGrowingRecipe(output, RuBlocks.ASTER, "aster");
         addBasicFlowerGrowingRecipe(output, RuBlocks.BLEEDING_HEART, "beleeding_heart");
         addBasicFlowerGrowingRecipe(output, RuBlocks.DAISY, "daisy");
@@ -329,7 +331,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         }, 16000, "salmonberry", "salmonberry");
     }
 
-    private void addCrusherRecipe(RecipeExporter RecipeExporter, Ingredient input, ItemStack output,
+    private void addCrusherRecipe(Consumer<RecipeJsonProvider> RecipeExporter, Ingredient input, ItemStack output,
                                   String recipeIngredientName) {
         Identifier recipeId = Identifier.of(EnergizedPowerRUMod.MODID, PATH_PREFIX + "crusher/" +
                 getItemPath(output.getItem()) + "_from_crushing_" + recipeIngredientName);
@@ -341,7 +343,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeExporter.accept(recipe);
     }
 
-    private void addBasicWoodSawmillRecipe(RecipeExporter RecipeExporter, ItemStack planksItem,
+    private void addBasicWoodSawmillRecipe(Consumer<RecipeJsonProvider> RecipeExporter, ItemStack planksItem,
                                                   Ingredient logsInput, Ingredient fenceInput, Ingredient fenceGateInput,
                                                   Ingredient doorInput, Ingredient trapdoorInput, Ingredient pressurePlateInput,
                                                   Ingredient signInput, Ingredient boatInput, Ingredient chestBoatInput,
@@ -352,7 +354,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         addBasicWoodWithoutLogsSawmillRecipe(RecipeExporter, planksItem, fenceInput, fenceGateInput, doorInput, trapdoorInput,
                 pressurePlateInput, signInput, boatInput, chestBoatInput, isRaft, woodName);
     }
-    private void addBasicWoodWithoutLogsSawmillRecipe(RecipeExporter RecipeExporter, ItemStack planksItem,
+    private void addBasicWoodWithoutLogsSawmillRecipe(Consumer<RecipeJsonProvider> RecipeExporter, ItemStack planksItem,
                                                              Ingredient fenceInput, Ingredient fenceGateInput,
                                                              Ingredient doorInput, Ingredient trapdoorInput, Ingredient pressurePlateInput,
                                                              Ingredient signInput, Ingredient boatInput, Ingredient chestBoatInput,
@@ -365,7 +367,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         addSawmillRecipe(RecipeExporter, chestBoatInput, planksItem.copyWithCount(5), 7, getItemPath(planksItem.getItem()),
                 woodName + (isRaft?"_chest_raft":"_chest_boat"));
     }
-    private void addBasicWoodWithoutLogsAndBoatsSawmillRecipe(RecipeExporter RecipeExporter, ItemStack planksItem,
+    private void addBasicWoodWithoutLogsAndBoatsSawmillRecipe(Consumer<RecipeJsonProvider> RecipeExporter, ItemStack planksItem,
                                                               Ingredient fenceInput, Ingredient fenceGateInput,
                                                               Ingredient doorInput, Ingredient trapdoorInput, Ingredient pressurePlateInput,
                                                               Ingredient signInput, String woodName) {
@@ -382,7 +384,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         addSawmillRecipe(RecipeExporter, signInput, planksItem.copyWithCount(2), 1, getItemPath(planksItem.getItem()),
                 woodName + "_sign");
     }
-    private void addSawmillRecipe(RecipeExporter RecipeExporter, Ingredient input, ItemStack output,
+    private void addSawmillRecipe(Consumer<RecipeJsonProvider> RecipeExporter, Ingredient input, ItemStack output,
                                   int sawdustAmount, String outputName, String recipeIngredientName) {
         Identifier recipeId = Identifier.of(EnergizedPowerRUMod.MODID, PATH_PREFIX + "sawmill/" +
                 outputName + "_from_sawing_" + recipeIngredientName);
@@ -394,7 +396,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         RecipeExporter.accept(recipe);
     }
 
-    private void addBasicFlowerGrowingRecipe(RecipeExporter RecipeExporter, ItemConvertible flowerItem,
+    private void addBasicFlowerGrowingRecipe(Consumer<RecipeJsonProvider> RecipeExporter, ItemConvertible flowerItem,
                                              String outputName) {
         addPlantGrowthChamberRecipe(RecipeExporter, Ingredient.ofItems(flowerItem), new OutputItemStackWithPercentages[] {
                 new OutputItemStackWithPercentages(new ItemStack(flowerItem), new double[] {
@@ -402,7 +404,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 })
         }, 16000, outputName, getItemPath(flowerItem));
     }
-    private void addPlantGrowthChamberRecipe(RecipeExporter RecipeExporter, Ingredient input,
+    private void addPlantGrowthChamberRecipe(Consumer<RecipeJsonProvider> RecipeExporter, Ingredient input,
                                              OutputItemStackWithPercentages[] outputs, int ticks,
                                              String outputName, String recipeIngredientName) {
         Identifier recipeId = Identifier.of(EnergizedPowerRUMod.MODID, PATH_PREFIX + "growing/" +

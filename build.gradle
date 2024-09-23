@@ -39,10 +39,6 @@ repositories {
         }
     }
 
-    maven {
-        url "https://jitpack.io"
-    }
-
     flatDir {
         dir 'libs'
     }
@@ -92,23 +88,23 @@ dependencies {
     }
 
     // Energized Power dependency
-    modCompileOnly "curse.maven:energized-power-782147:5746671"
+    modCompileOnly "curse.maven:energized-power-782147:5746657"
 
-    modLocalRuntime "curse.maven:energized-power-782147:5746671"
+    modLocalRuntime "curse.maven:energized-power-782147:5746657"
 
     // Regions Unexplored integration
-    modCompileOnly "curse.maven:regions-unexplored-659110:5151840"
+    modCompileOnly "curse.maven:regions-unexplored-659110:5558172"
 
-    modLocalRuntime "curse.maven:regions-unexplored-659110:5151840"
+    modLocalRuntime "curse.maven:regions-unexplored-659110:5558172"
     modLocalRuntime 'com.electronwill.night-config:core:3.7.4'
     modLocalRuntime 'com.electronwill.night-config:toml:3.7.3'
-    modLocalRuntime "curse.maven:terrablender-fabric-565956:5006036"
-    modLocalRuntime "com.github.Lortseam.completeconfig:base:2.5.0"
+    modLocalRuntime "curse.maven:terrablender-fabric-565956:5378181"
+    modLocalRuntime "curse.maven:forge-config-api-port-fabric-547434:4583000"
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    modLocalRuntime "dev.emi:emi-fabric:1.0.22+1.20.2"
+    modLocalRuntime "dev.emi:emi-fabric:1.0.12+1.20.1"
 }
 
 processResources {
