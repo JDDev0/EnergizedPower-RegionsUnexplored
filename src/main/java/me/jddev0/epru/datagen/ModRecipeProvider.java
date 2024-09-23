@@ -168,6 +168,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 Ingredient.ofItems(RegionsUnexploredBlocks.SCULKWOOD_SIGN), Ingredient.ofItems(RegionsUnexploredItems.SCULKWOOD_BOAT),
                 Ingredient.ofItems(RegionsUnexploredItems.SCULKWOOD_CHEST_BOAT),
                 false, "sculkwood");
+
+        addSawmillRecipe(output, Ingredient.ofItems(RegionsUnexploredBlocks.ALPHA_LOG),
+                ItemStackUtils.copyWithCount(new ItemStack(RegionsUnexploredBlocks.ALPHA_PLANKS), 6), 1,
+                getItemPath(RegionsUnexploredBlocks.ALPHA_PLANKS.asItem()), "alpha_logs");
     }
 
     private void buildPlantGrowthChamberRecipes(Consumer<RecipeJsonProvider> output) {
@@ -188,6 +192,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.YELLOW_LUPINE, "yellow_lupine");
         addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.COBALT_EARLIGHT, "cobalt_earlight");
         addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.CAVE_HYSSOP, "cave_hyssop");
+
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.ALPHA_ROSE, "alpha_rose");
+        addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.ALPHA_DANDELION, "alpha_dandelion");
 
         addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.BARLEY, "barley");
         addBasicFlowerGrowingRecipe(output, RegionsUnexploredBlocks.CATTAIL, "cattail");
