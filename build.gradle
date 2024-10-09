@@ -89,9 +89,9 @@ dependencies {
     }
 
     // Energized Power dependency
-    modCompileOnly "curse.maven:energized-power-782147:5746647"
+    modCompileOnly "curse.maven:energized-power-782147:5797512"
 
-    modLocalRuntime "curse.maven:energized-power-782147:5746647"
+    modLocalRuntime "curse.maven:energized-power-782147:5797512"
 
     // Regions Unexplored integration
     modCompileOnly "curse.maven:regions-unexplored-659110:4470171"
