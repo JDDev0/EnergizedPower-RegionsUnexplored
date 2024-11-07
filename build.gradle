@@ -161,7 +161,7 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    localRuntime "dev.emi:emi-neoforge:1.1.14+1.21.1"
+    localRuntime "dev.emi:emi-neoforge:1.1.18+1.21.1"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
