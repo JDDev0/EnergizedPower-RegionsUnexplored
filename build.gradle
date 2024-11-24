@@ -156,7 +156,7 @@ dependencies {
     compileOnly "curse.maven:regions-unexplored-659110:5579932"
 
     localRuntime "curse.maven:regions-unexplored-659110:5579932"
-    localRuntime "curse.maven:terrablender-neoforge-940057:5685546"
+    localRuntime "curse.maven:terrablender-neoforge-940057:5864140"
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
