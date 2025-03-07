@@ -7,9 +7,5 @@
     "count": 5,
     "item": "regions_unexplored:kapok_planks"
   },
-  "sawdustAmount": 7,
-  "secondaryOutput": {
-    "count": 7,
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 7
 }

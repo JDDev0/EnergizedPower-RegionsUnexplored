@@ -7,8 +7,5 @@
     "count": 2,
     "item": "regions_unexplored:brimwood_planks"
   },
-  "sawdustAmount": 1,
-  "secondaryOutput": {
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 1
 }

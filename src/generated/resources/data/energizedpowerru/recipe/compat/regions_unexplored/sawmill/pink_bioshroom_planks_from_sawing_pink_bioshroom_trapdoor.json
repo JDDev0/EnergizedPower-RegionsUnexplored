@@ -7,9 +7,5 @@
     "count": 2,
     "item": "regions_unexplored:pink_bioshroom_planks"
   },
-  "sawdustAmount": 3,
-  "secondaryOutput": {
-    "count": 3,
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 3
 }

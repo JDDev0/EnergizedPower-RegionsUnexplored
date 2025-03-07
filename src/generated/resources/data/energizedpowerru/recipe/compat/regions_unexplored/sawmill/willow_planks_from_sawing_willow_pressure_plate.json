@@ -6,9 +6,5 @@
   "output": {
     "item": "regions_unexplored:willow_planks"
   },
-  "sawdustAmount": 2,
-  "secondaryOutput": {
-    "count": 2,
-    "item": "energizedpower:sawdust"
-  }
+  "sawdustAmount": 2
 }
