@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.7-SNAPSHOT'
     id 'maven-publish'
+    id "me.modmuss50.mod-publish-plugin" version "2.0.0-beta.2"
 }
 
 version = project.mod_version
@@ -78,9 +79,9 @@ dependencies {
     }
 
     // Energized Power dependency
-    modCompileOnly "curse.maven:energized-power-782147:5797537"
+    modCompileOnly "curse.maven:energized-power-782147:8238845"
 
-    modLocalRuntime "curse.maven:energized-power-782147:5797537"
+    modLocalRuntime "curse.maven:energized-power-782147:8238845"
 
     // Regions Unexplored integration
     modCompileOnly "curse.maven:regions-unexplored-659110:6273884"
@@ -140,6 +141,37 @@ publishing {
         // Notice: This block does NOT have the same function as the block in the top level.
         // The repositories here will be used for publishing your artifact, not for
         // retrieving dependencies.
+    }
+}
+
+publishMods {
+    displayName = "Energized Power - RU - " + "1.21.1" + " - v" + project.mod_version.split("\\+")[0] + " [Fabric]"
+    changelog = new File("CHANGELOG.md").exists()?new File("CHANGELOG.md").getText("UTF-8"):""
+    type = BETA //TODO change to STABLE if v3.0.0 is no longer in beta
+    file = remapJar.archiveFile
+    modLoaders.add("fabric")
+
+    dryRun = project.mod_version.contains("dev")
+
+    if(project.hasProperty('MODRINTH_TOKEN')) {
+        modrinth {
+            accessToken = getProperty('MODRINTH_TOKEN') as String
+            projectId = "2x078t9D"
+            minecraftVersionList("1.21.1")
+            requires("fabric-api", "energized-power", "regions-unexplored")
+        }
+    }
+
+    if(project.hasProperty('CURSEFORGE_TOKEN')) {
+        curseforge {
+            accessToken = getProperty('CURSEFORGE_TOKEN') as String
+            projectId = "1108257"
+            minecraftVersionList("1.21.1")
+            requires("fabric-api", "energized-power", "regions-unexplored")
+            client = true
+            server = true
+            javaVersions.add(JavaVersion.VERSION_21)
+        }
     }
 }
 
