@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:plant_growth_chamber_soil",
+  "energyConsumptionMultiplier": 0.7,
+  "fluidConsumptionMultiplier": 0.75,
+  "ingredient": {
+    "item": "regions_unexplored:peat_farmland"
+  },
+  "soilType": "energizedpower:farmland",
+  "speedMultiplier": 1.75
+}

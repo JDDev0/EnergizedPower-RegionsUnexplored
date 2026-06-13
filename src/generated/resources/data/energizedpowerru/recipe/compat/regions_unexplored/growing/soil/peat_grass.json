@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:plant_growth_chamber_soil",
+  "energyConsumptionMultiplier": 0.9,
+  "fluidConsumptionMultiplier": 0.75,
+  "ingredient": {
+    "item": "regions_unexplored:peat_grass_block"
+  },
+  "soilType": "energizedpower:grass",
+  "speedMultiplier": 1.3
+}

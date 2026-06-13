@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:plant_growth_chamber_soil",
+  "energyConsumptionMultiplier": 0.9,
+  "fluidConsumptionMultiplier": 0.75,
+  "ingredient": {
+    "item": "regions_unexplored:peat_podzol"
+  },
+  "soilType": "energizedpower:podzol",
+  "speedMultiplier": 1.5
+}

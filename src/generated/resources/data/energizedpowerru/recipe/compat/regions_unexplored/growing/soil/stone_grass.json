@@ -1,0 +1,21 @@
+{
+  "type": "energizedpower:plant_growth_chamber_soil",
+  "energyConsumptionMultiplier": 2.0,
+  "fluidConsumptionMultiplier": 2.0,
+  "ingredient": [
+    {
+      "item": "regions_unexplored:stone_grass_block"
+    },
+    {
+      "item": "regions_unexplored:deepslate_grass_block"
+    },
+    {
+      "item": "regions_unexplored:argillite_grass_block"
+    },
+    {
+      "item": "regions_unexplored:chalk_grass_block"
+    }
+  ],
+  "soilType": "energizedpower:grass",
+  "speedMultiplier": 0.75
+}

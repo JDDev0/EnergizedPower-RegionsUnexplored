@@ -1,6 +1,7 @@
 package me.jddev0.epru;
 
 import com.mojang.logging.LogUtils;
+import me.jddev0.epru.recipe.EPRURecipes;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 
@@ -10,6 +11,6 @@ public class EnergizedPowerRUMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
+        EPRURecipes.register();
     }
 }

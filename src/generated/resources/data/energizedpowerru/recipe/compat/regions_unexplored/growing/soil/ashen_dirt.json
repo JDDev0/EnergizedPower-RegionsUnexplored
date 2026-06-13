@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:plant_growth_chamber_soil",
+  "energyConsumptionMultiplier": 0.75,
+  "fluidConsumptionMultiplier": 1.1,
+  "ingredient": {
+    "item": "regions_unexplored:ashen_dirt"
+  },
+  "soilType": "energizedpower:grass",
+  "speedMultiplier": 1.15
+}
