@@ -1,17 +1,24 @@
 package me.jddev0.epru.datagen;
 
 import me.jddev0.ep.soil.EPSoilTypeTags;
+import me.jddev0.ep.soil.EPSoilTypes;
 import me.jddev0.ep.soil.SoilType;
 import me.jddev0.epru.EnergizedPowerRUMod;
 import me.jddev0.ep.recipe.*;
+import me.jddev0.epru.recipe.PeatFarmlandCraftingRecipe;
+import me.jddev0.epru.recipe.SiltFarmlandCraftingRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
+import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
@@ -22,7 +29,10 @@ import net.regions_unexplored.block.RuBlocks;
 import net.regions_unexplored.data.tags.RuTags;
 import net.regions_unexplored.item.RuItems;
 
+import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final String REGIONS_UNEXPLORED_MOD_ID = Constants.MOD_ID;
@@ -34,9 +44,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(RecipeOutput output) {
+        buildCraftingRecipes(output);
         buildCrusherRecipes(output);
         buildSawmillRecipes(output);
         buildPlantGrowthChamberRecipes(output);
+        buildPlantGrowthChamberSoilRecipes(output);
+    }
+    private void buildCustomCraftingRecipes(RecipeOutput output) {
+        addCustomCraftingRecipe(output, PeatFarmlandCraftingRecipe::new, CraftingBookCategory.MISC,
+                "peat_farmland");
+        addCustomCraftingRecipe(output, SiltFarmlandCraftingRecipe::new, CraftingBookCategory.MISC,
+                "silt_farmland");
+    }
+
+    private void buildCraftingRecipes(RecipeOutput output) {
+        buildCustomCraftingRecipes(output);
     }
 
     private void buildCrusherRecipes(RecipeOutput output) {
@@ -342,6 +364,55 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }, EPSoilTypeTags.FLOWERS, Fluids.WATER, 0.0625, 4000, "salmonberry", "salmonberry");
     }
 
+    private void buildPlantGrowthChamberSoilRecipes(RecipeOutput output) {
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.PEAT_FARMLAND),
+                EPSoilTypes.FARMLAND, 1.75, 0.75, 0.7, "peat_farmland");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.PEAT_DIRT),
+                EPSoilTypes.DIRT, 1.15, 0.75, 0.9, "peat_dirt");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.PEAT_COARSE_DIRT),
+                EPSoilTypes.COARSE_DIRT, 1.15, 1.0, 0.8, "peat_coarse_dirt");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.PEAT_GRASS_BLOCK),
+                EPSoilTypes.GRASS, 1.3, 0.75, 0.9, "peat_grass");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.PEAT_PODZOL),
+                EPSoilTypes.PODZOL, 1.5, 0.75, 0.9, "peat_podzol");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.PEAT_MUD),
+                EPSoilTypes.MUD, 1.5, 0.35, 0.9, "peat_mud");
+
+
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.SILT_FARMLAND),
+                EPSoilTypes.FARMLAND, 1.25, 1.25, 1.0, "silt_farmland");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.SILT_DIRT),
+                EPSoilTypes.DIRT, 0.75, 1.25, 1.1, "silt_dirt");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.SILT_COARSE_DIRT),
+                EPSoilTypes.COARSE_DIRT, 0.75, 1.4, 1.0, "silt_coarse_dirt");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.SILT_GRASS_BLOCK),
+                EPSoilTypes.GRASS, 0.9, 1.25, 1.1, "silt_grass");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.SILT_PODZOL),
+                EPSoilTypes.PODZOL, 1.0, 1.25, 1.1, "silt_podzol");
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.SILT_MUD),
+                EPSoilTypes.MUD, 1.0, 0.75, 1.1, "silt_mud");
+
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.ASHEN_DIRT),
+                EPSoilTypes.GRASS, 1.15, 1.1, 0.75, "ashen_dirt");
+
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.ALPHA_GRASS_BLOCK),
+                EPSoilTypes.GRASS, 1.1, 1.0, 1.0, "alpha_grass");
+
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.STONE_GRASS_BLOCK, RuBlocks.DEEPSLATE_GRASS_BLOCK, RuBlocks.ARGILLITE_GRASS_BLOCK, RuBlocks.CHALK_GRASS_BLOCK),
+                EPSoilTypes.GRASS, 0.75, 2.0, 2.0, "stone_grass");
+
+        addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.ARGILLITE, RuBlocks.CHALK),
+                EPSoilTypes.STONE, 0.5, 2.0, 2.0, "stone");
+    }
+    private void addCustomCraftingRecipe(RecipeOutput recipeOutput, Function<CraftingBookCategory, ? extends CustomRecipe> customRecipeFactory,
+                                         CraftingBookCategory category, String recipeIdString) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "crafting/" +
+                recipeIdString);
+
+        CustomRecipe recipe = customRecipeFactory.apply(category);
+        recipeOutput.accept(recipeId, recipe, null);
+    }
+
     private void addCrusherRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output, String recipeIngredientName) {
         ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "crusher/" +
                 getItemName(output.getItem()) + "_from_crushing_" + recipeIngredientName);
@@ -425,5 +496,38 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         PlantGrowthChamberRecipe recipe = new PlantGrowthChamberRecipe(outputs, input, soilType, fluid, fluidConsumption, ticks);
         recipeOutput.accept(recipeId, recipe, null);
+    }
+
+    private void addPlantGrowthChamberSoilRecipe(RecipeOutput recipeOutput, Ingredient input,
+                                                 ResourceKey<SoilType> soilType,
+                                                 double speedMultiplier,
+                                                 double fluidConsumptionMultiplier, double energyConsumptionMultiplier,
+                                                 String recipeIngredientName) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "growing/soil/" +
+                recipeIngredientName);
+
+        PlantGrowthChamberSoilRecipe recipe = new PlantGrowthChamberSoilRecipe(input, soilType,
+                speedMultiplier, fluidConsumptionMultiplier, energyConsumptionMultiplier);
+        recipeOutput.accept(recipeId, recipe, null);
+    }
+
+    private Ingredient ingredientOf(Supplier<? extends ItemLike> item) {
+        return Ingredient.of(item.get());
+    }
+
+    private Ingredient ingredientOf(Supplier<? extends ItemLike>... items) {
+        return Ingredient.of(Arrays.stream(items).map(Supplier::get).toArray(ItemLike[]::new));
+    }
+
+    private Ingredient ingredientOf(ItemLike item) {
+        return Ingredient.of(item);
+    }
+
+    private Ingredient ingredientOf(ItemLike... items) {
+        return Ingredient.of(items);
+    }
+
+    private Ingredient ingredientOf(TagKey<Item> tagKey) {
+        return Ingredient.of(tagKey);
     }
 }

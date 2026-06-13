@@ -1,0 +1,10 @@
+{
+  "type": "energizedpower:plant_growth_chamber_soil",
+  "energyConsumptionMultiplier": 1.0,
+  "fluidConsumptionMultiplier": 1.4,
+  "ingredient": {
+    "item": "regions_unexplored:silt_coarse_dirt"
+  },
+  "soilType": "energizedpower:coarse_dirt",
+  "speedMultiplier": 0.75
+}

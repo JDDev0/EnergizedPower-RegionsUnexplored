@@ -7,6 +7,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import me.jddev0.epru.recipe.EPRURecipes;
 import org.slf4j.Logger;
 
 @Mod(EnergizedPowerRUMod.MODID)
@@ -15,7 +16,7 @@ public class EnergizedPowerRUMod {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public EnergizedPowerRUMod(IEventBus modEventBus) {
-
+        EPRURecipes.register(modEventBus);
     }
 
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
