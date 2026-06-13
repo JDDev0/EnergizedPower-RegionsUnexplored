@@ -25,6 +25,15 @@
 		],
 		"client": [
 			"me.jddev0.epru.EnergizedPowerRUModClient"
+		],
+		"rei_client": [
+			"me.jddev0.epru.integration.rei.EnergizedPowerRUREIPlugin"
+		],
+		"jei_mod_plugin": [
+			"me.jddev0.epru.integration.jei.EnergizedPowerRUJEIPlugin"
+		],
+		"emi": [
+			"me.jddev0.epru.integration.emi.EnergizedPowerRUEMIPlugin"
 		]
 	},
 	"accessWidener" : "energizedpowerru.accesswidener",
