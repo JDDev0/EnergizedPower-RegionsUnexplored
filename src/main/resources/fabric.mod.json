@@ -25,15 +25,6 @@
 		],
 		"client": [
 			"me.jddev0.epru.EnergizedPowerRUModClient"
-		],
-		"rei_client": [
-			"me.jddev0.epru.integration.rei.EnergizedPowerRUREIPlugin"
-		],
-		"jei_mod_plugin": [
-			"me.jddev0.epru.integration.jei.EnergizedPowerRUJEIPlugin"
-		],
-		"emi": [
-			"me.jddev0.epru.integration.emi.EnergizedPowerRUEMIPlugin"
 		]
 	},
 	"accessWidener" : "energizedpowerru.accesswidener",
@@ -43,7 +34,7 @@
 		"java": ">=21",
 		"fabric-api": "*",
 
-		"energizedpower": ">=3.0.0-beta.2",
+		"energizedpower": ">=3.0.0-beta.3",
 
 		"regions_unexplored": "*"
 	},

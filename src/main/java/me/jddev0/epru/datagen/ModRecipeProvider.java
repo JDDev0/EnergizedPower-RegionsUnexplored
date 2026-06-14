@@ -5,8 +5,6 @@ import me.jddev0.ep.soil.EPSoilTypes;
 import me.jddev0.ep.soil.SoilType;
 import me.jddev0.epru.EnergizedPowerRUMod;
 import me.jddev0.ep.recipe.*;
-import me.jddev0.epru.recipe.PeatFarmlandCraftingRecipe;
-import me.jddev0.epru.recipe.SiltFarmlandCraftingRecipe;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -17,7 +15,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -30,7 +27,6 @@ import net.regions_unexplored.item.RuItems;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -50,9 +46,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         buildPlantGrowthChamberSoilRecipes(output);
     }
     private void buildCustomCraftingRecipes(RecipeOutput output) {
-        addCustomCraftingRecipe(output, PeatFarmlandCraftingRecipe::new, CraftingBookCategory.MISC,
+        addCustomCraftingRecipe(output,
+                new FarmlandCraftingRecipe(ingredientOf(RuBlocks.PEAT_DIRT), new ItemStack(RuBlocks.PEAT_FARMLAND.get())),
                 "peat_farmland");
-        addCustomCraftingRecipe(output, SiltFarmlandCraftingRecipe::new, CraftingBookCategory.MISC,
+        addCustomCraftingRecipe(output,
+                new FarmlandCraftingRecipe(ingredientOf(RuBlocks.SILT_DIRT), new ItemStack(RuBlocks.SILT_FARMLAND.get())),
                 "silt_farmland");
     }
 
@@ -403,13 +401,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.ARGILLITE, RuBlocks.CHALK),
                 EPSoilTypes.STONE, 0.5, 2.0, 2.0, "stone");
     }
-    private void addCustomCraftingRecipe(RecipeOutput recipeOutput, Function<CraftingBookCategory, ? extends CustomRecipe> customRecipeFactory,
-                                         CraftingBookCategory category, String recipeIdString) {
+    private void addCustomCraftingRecipe(RecipeOutput recipeOutput, CustomRecipe customRecipe, String recipeIdString) {
         ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "crafting/" +
                 recipeIdString);
 
-        CustomRecipe recipe = customRecipeFactory.apply(category);
-        recipeOutput.accept(recipeId, recipe, null);
+        recipeOutput.accept(recipeId, customRecipe, null);
     }
 
     private void addCrusherRecipe(RecipeOutput RecipeExporter, Ingredient input, ItemStack output,
