@@ -5,8 +5,6 @@ import me.jddev0.ep.soil.EPSoilTypes;
 import me.jddev0.ep.soil.SoilType;
 import me.jddev0.epru.EnergizedPowerRUMod;
 import me.jddev0.ep.recipe.*;
-import me.jddev0.epru.recipe.PeatFarmlandCraftingRecipe;
-import me.jddev0.epru.recipe.SiltFarmlandCraftingRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -31,7 +29,6 @@ import net.regions_unexplored.item.RuItems;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
@@ -51,9 +48,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         buildPlantGrowthChamberSoilRecipes(output);
     }
     private void buildCustomCraftingRecipes(RecipeOutput output) {
-        addCustomCraftingRecipe(output, PeatFarmlandCraftingRecipe::new, CraftingBookCategory.MISC,
+        addCustomCraftingRecipe(output,
+                new FarmlandCraftingRecipe(ingredientOf(RuBlocks.PEAT_DIRT), new ItemStack(RuBlocks.PEAT_FARMLAND.get())),
                 "peat_farmland");
-        addCustomCraftingRecipe(output, SiltFarmlandCraftingRecipe::new, CraftingBookCategory.MISC,
+        addCustomCraftingRecipe(output,
+                new FarmlandCraftingRecipe(ingredientOf(RuBlocks.SILT_DIRT), new ItemStack(RuBlocks.SILT_FARMLAND.get())),
                 "silt_farmland");
     }
 
@@ -404,13 +403,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         addPlantGrowthChamberSoilRecipe(output, ingredientOf(RuBlocks.ARGILLITE, RuBlocks.CHALK),
                 EPSoilTypes.STONE, 0.5, 2.0, 2.0, "stone");
     }
-    private void addCustomCraftingRecipe(RecipeOutput recipeOutput, Function<CraftingBookCategory, ? extends CustomRecipe> customRecipeFactory,
-                                         CraftingBookCategory category, String recipeIdString) {
+    private void addCustomCraftingRecipe(RecipeOutput recipeOutput, CustomRecipe customRecipe, String recipeIdString) {
         ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(EnergizedPowerRUMod.MODID, PATH_PREFIX + "crafting/" +
                 recipeIdString);
 
-        CustomRecipe recipe = customRecipeFactory.apply(category);
-        recipeOutput.accept(recipeId, recipe, null);
+        recipeOutput.accept(recipeId, customRecipe, null);
     }
 
     private void addCrusherRecipe(RecipeOutput recipeOutput, Ingredient input, ItemStack output, String recipeIngredientName) {

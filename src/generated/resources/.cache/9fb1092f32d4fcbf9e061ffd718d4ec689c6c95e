@@ -1,6 +1,6 @@
-// 1.21.1	2026-06-13T14:56:23.221581412	Recipes
-2201062e61fc4e23e20fcfb7431078fdd913327b data/energizedpowerru/recipe/compat/regions_unexplored/crafting/peat_farmland.json
-afa7661e398f3cc5f083e97f812fada077340588 data/energizedpowerru/recipe/compat/regions_unexplored/crafting/silt_farmland.json
+// 1.21.1	2026-06-14T18:25:28.08880256	Recipes
+6a33a8d49d3c5eaae2030e8265d21b3982a6ca07 data/energizedpowerru/recipe/compat/regions_unexplored/crafting/peat_farmland.json
+4444bc2e2e5e6e8594619300e0c1f45257992c30 data/energizedpowerru/recipe/compat/regions_unexplored/crafting/silt_farmland.json
 dd0c2ef7f442c165a31e8426cbf43f62a940a705 data/energizedpowerru/recipe/compat/regions_unexplored/crusher/chalk_from_crushing_chalk_variants.json
 ebfabe188711d72e238df31be8833bf3e9002200 data/energizedpowerru/recipe/compat/regions_unexplored/crusher/mossy_cobblestone_from_crushing_mossy_stone.json
 66d72a5f33a597dfd665becff54b0fbeced25e6c data/energizedpowerru/recipe/compat/regions_unexplored/growing/alpha_dandelion_from_growing_alpha_dandelion.json
