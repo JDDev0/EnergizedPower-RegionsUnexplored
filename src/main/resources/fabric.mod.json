@@ -34,7 +34,7 @@
 		"java": ">=21",
 		"fabric-api": "*",
 
-		"energizedpower": ">=3.0.0-beta.3",
+		"energizedpower": ">=3.0.0",
 
 		"regions_unexplored": "*"
 	},

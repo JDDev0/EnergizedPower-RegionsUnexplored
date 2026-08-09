@@ -79,9 +79,9 @@ dependencies {
     }
 
     // Energized Power dependency
-    modCompileOnly "curse.maven:energized-power-782147:8247675"
+    modCompileOnly "curse.maven:energized-power-782147:8610422"
 
-    modLocalRuntime "curse.maven:energized-power-782147:8247675"
+    modLocalRuntime "curse.maven:energized-power-782147:8610422"
 
     // Regions Unexplored integration
     modCompileOnly "curse.maven:regions-unexplored-659110:6273884"
@@ -149,7 +149,7 @@ publishing {
 publishMods {
     displayName = "Energized Power - RU - " + "1.21.1" + " - v" + project.mod_version.split("\\+")[0] + " [Fabric]"
     changelog = new File("CHANGELOG.md").exists()?new File("CHANGELOG.md").getText("UTF-8"):""
-    type = BETA //TODO change to STABLE if v3.0.0 is no longer in beta
+    type = STABLE
     file = remapJar.archiveFile
     modLoaders.add("fabric")
 
