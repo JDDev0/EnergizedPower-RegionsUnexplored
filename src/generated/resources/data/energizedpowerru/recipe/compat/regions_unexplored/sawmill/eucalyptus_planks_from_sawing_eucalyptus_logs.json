@@ -1,11 +1,9 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "tag": "regions_unexplored:eucalyptus_logs"
-  },
-  "output": {
+  "ingredient": "#regions_unexplored:eucalyptus_logs",
+  "result": {
     "count": 6,
-    "item": "regions_unexplored:eucalyptus_planks"
+    "id": "regions_unexplored:eucalyptus_planks"
   },
   "sawdustAmount": 1
 }

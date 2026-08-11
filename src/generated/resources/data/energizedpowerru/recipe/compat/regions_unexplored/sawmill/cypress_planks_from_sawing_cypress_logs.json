@@ -1,11 +1,9 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "tag": "regions_unexplored:cypress_logs"
-  },
-  "output": {
+  "ingredient": "#regions_unexplored:cypress_logs",
+  "result": {
     "count": 6,
-    "item": "regions_unexplored:cypress_planks"
+    "id": "regions_unexplored:cypress_planks"
   },
   "sawdustAmount": 1
 }

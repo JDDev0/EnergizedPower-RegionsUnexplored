@@ -1,10 +1,8 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:cobalt_door"
-  },
-  "output": {
-    "item": "regions_unexplored:cobalt_planks"
+  "ingredient": "regions_unexplored:cobalt_door",
+  "result": {
+    "id": "regions_unexplored:cobalt_planks"
   },
   "sawdustAmount": 3
 }

@@ -2,9 +2,7 @@
   "type": "energizedpower:plant_growth_chamber_soil",
   "energyConsumptionMultiplier": 1.0,
   "fluidConsumptionMultiplier": 1.25,
-  "ingredient": {
-    "item": "regions_unexplored:silt_farmland"
-  },
+  "ingredient": "regions_unexplored:silt_farmland",
   "soilType": "energizedpower:farmland",
   "speedMultiplier": 1.25
 }

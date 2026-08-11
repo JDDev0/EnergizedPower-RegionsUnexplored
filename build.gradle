@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'net.fabricmc.fabric-loom' version '1.15-SNAPSHOT'
     id 'maven-publish'
     id "me.modmuss50.mod-publish-plugin" version "2.0.0-beta.2"
 }
@@ -20,6 +20,11 @@ repositories {
 
     maven {
         url "https://maven.shedaniel.me"
+    }
+
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
     }
 
     maven {
@@ -45,12 +50,10 @@ repositories {
     }
 }
 
-loom {
-    accessWidenerPath = file("src/main/resources/energizedpowerru.accesswidener")
-}
-
 fabricApi {
     configureDataGeneration {
+        setClient(true)
+
         getOutputDirectory().set(getProject().file("src/generated/resources"))
 
         setModId(project.modid)
@@ -62,11 +65,10 @@ fabricApi {
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // Fabric API. This is technically optional, but you probably want it anyway.
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
     // Uncomment the following line to enable the deprecated Fabric API modules.
     // These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
@@ -74,30 +76,31 @@ dependencies {
     // modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
     // Team Reborn: Fabric energy
-    include modApi('teamreborn:energy:4.1.0') {
+    include api('teamreborn:energy:5.0.0') {
         exclude(group: "net.fabricmc.fabric-api")
     }
 
     // Energized Power dependency
-    modCompileOnly "curse.maven:energized-power-782147:8610422"
+    compileOnlyApi "curse.maven:energized-power-782147:8610442"
 
-    modLocalRuntime "curse.maven:energized-power-782147:8610422"
+    localRuntime "curse.maven:energized-power-782147:8610442"
 
     // Regions Unexplored integration
-    modCompileOnly "curse.maven:regions-unexplored-659110:6273884"
+    compileOnlyApi "curse.maven:regions-unexplored-659110:8490005"
 
-    modLocalRuntime "curse.maven:regions-unexplored-659110:6273884"
-    modLocalRuntime 'com.electronwill.night-config:core:3.7.4'
-    modLocalRuntime 'com.electronwill.night-config:toml:3.7.3'
-    modLocalRuntime "curse.maven:terrablender-fabric-565956:6054948"
-    modLocalRuntime "curse.maven:forge-config-api-port-fabric-547434:5982384"
+    localRuntime "curse.maven:regions-unexplored-659110:8490005"
+    localRuntime "curse.maven:lithostitched-936015:8378499"
+    localRuntime 'com.electronwill.night-config:core:3.7.4'
+    localRuntime 'com.electronwill.night-config:toml:3.7.3'
+    localRuntime "curse.maven:terrablender-fabric-565956:7933873"
+    localRuntime "curse.maven:forge-config-api-port-547434:8218664"
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    modLocalRuntime "dev.emi:emi-fabric:1.1.8+1.21"
-    //modLocalRuntime "me.shedaniel:RoughlyEnoughItems-fabric:16.0.729"
-    //modLocalRuntime "curse.maven:jei-238222:7129284"
+    localRuntime "mezz.jei:jei-26.1.2-fabric:29.6.2.31"
+    //localRuntime "me.shedaniel:RoughlyEnoughItems-fabric:20.0.811"
+    //localRuntime "dev.emi:emi-fabric:1.1.13+1.21.1"
 }
 
 processResources {
@@ -109,7 +112,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = 21
+    it.options.release = 25
 }
 
 java {
@@ -118,13 +121,20 @@ java {
     // If you remove this line, sources will not be generated.
     withSourcesJar()
 
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 jar {
     from("LICENSE") {
         rename { "${it}_${project.base.archivesName.get()}"}
+    }
+}
+
+//Show more errors for porting
+afterEvaluate {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xmaxerrs" << "2000"
     }
 }
 
@@ -147,10 +157,10 @@ publishing {
 }
 
 publishMods {
-    displayName = "Energized Power - RU - " + "1.21.1" + " - v" + project.mod_version.split("\\+")[0] + " [Fabric]"
+    displayName = "Energized Power - RU - " + "26.1.x" + " - v" + project.mod_version.split("\\+")[0] + " [Fabric]"
     changelog = new File("CHANGELOG.md").exists()?new File("CHANGELOG.md").getText("UTF-8"):""
     type = STABLE
-    file = remapJar.archiveFile
+    file = jar.archiveFile
     modLoaders.add("fabric")
 
     dryRun = project.mod_version.contains("dev")
@@ -158,8 +168,8 @@ publishMods {
     if(project.hasProperty('MODRINTH_TOKEN')) {
         modrinth {
             accessToken = getProperty('MODRINTH_TOKEN') as String
-            projectId = "2x078t9D"
-            minecraftVersionList("1.21.1")
+            projectId = "pFrEfXHl"
+            minecraftVersionList("26.1, 26.1.1, 26.1.2")
             requires("fabric-api", "energized-power", "regions-unexplored")
         }
     }
@@ -167,12 +177,12 @@ publishMods {
     if(project.hasProperty('CURSEFORGE_TOKEN')) {
         curseforge {
             accessToken = getProperty('CURSEFORGE_TOKEN') as String
-            projectId = "1108257"
-            minecraftVersionList("1.21.1")
+            projectId = "1108229"
+            minecraftVersionList("26.1, 26.1.1, 26.1.2")
             requires("fabric-api", "energized-power", "regions-unexplored")
             client = true
             server = true
-            javaVersions.add(JavaVersion.VERSION_21)
+            javaVersions.add(JavaVersion.VERSION_25)
         }
     }
 }
@@ -180,12 +190,4 @@ publishMods {
 //Dummy task to fix post sync error caused by NeoGradle
 tasks.register("idePostSync") {
 
-}
-
-// IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
-idea {
-    module {
-        downloadSources = true
-        downloadJavadoc = true
-    }
 }

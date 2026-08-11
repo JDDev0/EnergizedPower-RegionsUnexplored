@@ -1,11 +1,9 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:palm_trapdoor"
-  },
-  "output": {
+  "ingredient": "regions_unexplored:palm_trapdoor",
+  "result": {
     "count": 2,
-    "item": "regions_unexplored:palm_planks"
+    "id": "regions_unexplored:palm_planks"
   },
   "sawdustAmount": 3
 }

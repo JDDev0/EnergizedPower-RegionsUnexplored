@@ -1,10 +1,8 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:larch_door"
-  },
-  "output": {
-    "item": "regions_unexplored:larch_planks"
+  "ingredient": "regions_unexplored:larch_door",
+  "result": {
+    "id": "regions_unexplored:larch_planks"
   },
   "sawdustAmount": 3
 }

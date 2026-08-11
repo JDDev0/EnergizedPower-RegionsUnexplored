@@ -2,20 +2,18 @@
   "type": "energizedpower:plant_growth_chamber",
   "fluid": "minecraft:water",
   "fluidConsumption": 0.0625,
-  "ingredient": {
-    "item": "regions_unexplored:salmonberry"
-  },
-  "outputs": [
+  "ingredient": "regions_unexplored:salmonberry",
+  "results": [
     {
-      "output": {
-        "item": "regions_unexplored:salmonberry"
-      },
       "percentages": [
         1.0,
         1.0,
         0.33,
         0.17
-      ]
+      ],
+      "result": {
+        "id": "regions_unexplored:salmonberry"
+      }
     }
   ],
   "soilType": "#energizedpower:flowers",

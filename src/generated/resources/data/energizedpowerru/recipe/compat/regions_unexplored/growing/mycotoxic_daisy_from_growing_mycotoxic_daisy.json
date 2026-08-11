@@ -2,19 +2,17 @@
   "type": "energizedpower:plant_growth_chamber",
   "fluid": "minecraft:water",
   "fluidConsumption": 0.0625,
-  "ingredient": {
-    "item": "regions_unexplored:mycotoxic_daisy"
-  },
-  "outputs": [
+  "ingredient": "regions_unexplored:mycotoxic_daisy",
+  "results": [
     {
-      "output": {
-        "item": "regions_unexplored:mycotoxic_daisy"
-      },
       "percentages": [
         1.0,
         1.0,
         0.33
-      ]
+      ],
+      "result": {
+        "id": "regions_unexplored:mycotoxic_daisy"
+      }
     }
   ],
   "soilType": "#energizedpower:flowers",

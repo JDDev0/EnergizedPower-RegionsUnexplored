@@ -2,9 +2,7 @@
   "type": "energizedpower:plant_growth_chamber_soil",
   "energyConsumptionMultiplier": 1.1,
   "fluidConsumptionMultiplier": 0.75,
-  "ingredient": {
-    "item": "regions_unexplored:silt_mud"
-  },
+  "ingredient": "regions_unexplored:silt_mud",
   "soilType": "energizedpower:mud",
   "speedMultiplier": 1.0
 }

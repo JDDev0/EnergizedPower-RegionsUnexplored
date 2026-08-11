@@ -1,11 +1,9 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "tag": "regions_unexplored:dead_logs"
-  },
-  "output": {
+  "ingredient": "#regions_unexplored:dead_logs",
+  "result": {
     "count": 6,
-    "item": "regions_unexplored:dead_planks"
+    "id": "regions_unexplored:dead_planks"
   },
   "sawdustAmount": 1
 }

@@ -1,10 +1,8 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:eucalyptus_door"
-  },
-  "output": {
-    "item": "regions_unexplored:eucalyptus_planks"
+  "ingredient": "regions_unexplored:eucalyptus_door",
+  "result": {
+    "id": "regions_unexplored:eucalyptus_planks"
   },
   "sawdustAmount": 3
 }

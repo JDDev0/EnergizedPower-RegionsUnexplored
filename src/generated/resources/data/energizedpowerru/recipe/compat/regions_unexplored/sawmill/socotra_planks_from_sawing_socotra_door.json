@@ -1,10 +1,8 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:socotra_door"
-  },
-  "output": {
-    "item": "regions_unexplored:socotra_planks"
+  "ingredient": "regions_unexplored:socotra_door",
+  "result": {
+    "id": "regions_unexplored:socotra_planks"
   },
   "sawdustAmount": 3
 }

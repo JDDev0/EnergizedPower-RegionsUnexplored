@@ -1,11 +1,9 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:redwood_trapdoor"
-  },
-  "output": {
+  "ingredient": "regions_unexplored:redwood_trapdoor",
+  "result": {
     "count": 2,
-    "item": "regions_unexplored:redwood_planks"
+    "id": "regions_unexplored:redwood_planks"
   },
   "sawdustAmount": 3
 }

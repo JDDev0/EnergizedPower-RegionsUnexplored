@@ -2,14 +2,9 @@
   "type": "energizedpower:plant_growth_chamber",
   "fluid": "minecraft:water",
   "fluidConsumption": 0.0625,
-  "ingredient": {
-    "item": "regions_unexplored:clover"
-  },
-  "outputs": [
+  "ingredient": "regions_unexplored:clover",
+  "results": [
     {
-      "output": {
-        "item": "regions_unexplored:clover"
-      },
       "percentages": [
         1.0,
         1.0,
@@ -18,7 +13,10 @@
         0.33,
         0.33,
         0.15
-      ]
+      ],
+      "result": {
+        "id": "regions_unexplored:clover"
+      }
     }
   ],
   "soilType": "#energizedpower:flowers",

@@ -1,10 +1,8 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:kapok_door"
-  },
-  "output": {
-    "item": "regions_unexplored:kapok_planks"
+  "ingredient": "regions_unexplored:kapok_door",
+  "result": {
+    "id": "regions_unexplored:kapok_planks"
   },
   "sawdustAmount": 3
 }

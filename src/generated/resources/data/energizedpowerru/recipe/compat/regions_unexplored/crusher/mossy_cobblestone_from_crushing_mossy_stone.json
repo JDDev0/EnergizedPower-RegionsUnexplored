@@ -1,9 +1,7 @@
 {
   "type": "energizedpower:crusher",
-  "ingredient": {
-    "item": "regions_unexplored:mossy_stone"
-  },
-  "output": {
-    "item": "minecraft:mossy_cobblestone"
+  "ingredient": "regions_unexplored:mossy_stone",
+  "result": {
+    "id": "minecraft:mossy_cobblestone"
   }
 }

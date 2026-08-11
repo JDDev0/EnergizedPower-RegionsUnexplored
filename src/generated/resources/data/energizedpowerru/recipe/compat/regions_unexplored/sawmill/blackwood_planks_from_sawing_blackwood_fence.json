@@ -1,10 +1,8 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:blackwood_fence"
-  },
-  "output": {
-    "item": "regions_unexplored:blackwood_planks"
+  "ingredient": "regions_unexplored:blackwood_fence",
+  "result": {
+    "id": "regions_unexplored:blackwood_planks"
   },
   "sawdustAmount": 2
 }

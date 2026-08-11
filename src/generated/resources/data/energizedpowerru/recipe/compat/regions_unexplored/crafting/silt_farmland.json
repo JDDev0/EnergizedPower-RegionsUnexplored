@@ -1,10 +1,7 @@
 {
   "type": "energizedpower:farmland_crafting",
-  "dirt": {
-    "item": "regions_unexplored:silt_dirt"
-  },
+  "dirt": "regions_unexplored:silt_dirt",
   "farmland": {
-    "count": 1,
     "id": "regions_unexplored:silt_farmland"
   }
 }

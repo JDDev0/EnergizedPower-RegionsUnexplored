@@ -1,11 +1,9 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:baobab_boat"
-  },
-  "output": {
+  "ingredient": "regions_unexplored:baobab_boat",
+  "result": {
     "count": 4,
-    "item": "regions_unexplored:baobab_planks"
+    "id": "regions_unexplored:baobab_planks"
   },
   "sawdustAmount": 3
 }

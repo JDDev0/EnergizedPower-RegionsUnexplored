@@ -1,10 +1,8 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:joshua_door"
-  },
-  "output": {
-    "item": "regions_unexplored:joshua_planks"
+  "ingredient": "regions_unexplored:joshua_door",
+  "result": {
+    "id": "regions_unexplored:joshua_planks"
   },
   "sawdustAmount": 3
 }

@@ -1,11 +1,9 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "tag": "regions_unexplored:kapok_logs"
-  },
-  "output": {
+  "ingredient": "#regions_unexplored:kapok_logs",
+  "result": {
     "count": 6,
-    "item": "regions_unexplored:kapok_planks"
+    "id": "regions_unexplored:kapok_planks"
   },
   "sawdustAmount": 1
 }

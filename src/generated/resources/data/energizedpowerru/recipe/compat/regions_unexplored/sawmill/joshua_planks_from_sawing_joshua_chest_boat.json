@@ -1,11 +1,9 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:joshua_chest_boat"
-  },
-  "output": {
+  "ingredient": "regions_unexplored:joshua_chest_boat",
+  "result": {
     "count": 5,
-    "item": "regions_unexplored:joshua_planks"
+    "id": "regions_unexplored:joshua_planks"
   },
   "sawdustAmount": 7
 }

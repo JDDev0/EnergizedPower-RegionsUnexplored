@@ -1,0 +1,9 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": "regions_unexplored:wisteria_boat",
+  "result": {
+    "count": 4,
+    "id": "regions_unexplored:wisteria_planks"
+  },
+  "sawdustAmount": 3
+}

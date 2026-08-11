@@ -1,10 +1,8 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:redwood_fence"
-  },
-  "output": {
-    "item": "regions_unexplored:redwood_planks"
+  "ingredient": "regions_unexplored:redwood_fence",
+  "result": {
+    "id": "regions_unexplored:redwood_planks"
   },
   "sawdustAmount": 2
 }

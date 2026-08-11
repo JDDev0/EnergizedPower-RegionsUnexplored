@@ -1,11 +1,9 @@
 {
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:yellow_bioshroom_trapdoor"
-  },
-  "output": {
+  "ingredient": "regions_unexplored:yellow_bioshroom_trapdoor",
+  "result": {
     "count": 2,
-    "item": "regions_unexplored:yellow_bioshroom_planks"
+    "id": "regions_unexplored:yellow_bioshroom_planks"
   },
   "sawdustAmount": 3
 }
