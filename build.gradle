@@ -168,7 +168,7 @@ publishMods {
     if(project.hasProperty('MODRINTH_TOKEN')) {
         modrinth {
             accessToken = getProperty('MODRINTH_TOKEN') as String
-            projectId = "pFrEfXHl"
+            projectId = "2x078t9D"
             minecraftVersionList("26.1, 26.1.1, 26.1.2")
             requires("fabric-api", "energized-power", "regions-unexplored")
         }
@@ -177,7 +177,7 @@ publishMods {
     if(project.hasProperty('CURSEFORGE_TOKEN')) {
         curseforge {
             accessToken = getProperty('CURSEFORGE_TOKEN') as String
-            projectId = "1108229"
+            projectId = "1108257"
             minecraftVersionList("26.1, 26.1.1, 26.1.2")
             requires("fabric-api", "energized-power", "regions-unexplored")
             client = true
