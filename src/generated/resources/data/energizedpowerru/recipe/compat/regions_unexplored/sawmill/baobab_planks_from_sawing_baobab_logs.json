@@ -1,17 +1,9 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "regions_unexplored"
-    }
-  ],
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "tag": "regions_unexplored:baobab_logs"
-  },
-  "output": {
+  "ingredient": "#regions_unexplored:bamboo_logs",
+  "result": {
     "count": 6,
-    "item": "regions_unexplored:baobab_planks"
+    "id": "regions_unexplored:baobab_planks"
   },
   "sawdustAmount": 1
 }

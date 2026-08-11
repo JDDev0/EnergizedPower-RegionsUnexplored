@@ -2,19 +2,17 @@
   "type": "energizedpower:plant_growth_chamber",
   "fluid": "minecraft:water",
   "fluidConsumption": 0.0625,
-  "ingredient": {
-    "item": "regions_unexplored:purple_lupine"
-  },
-  "outputs": [
+  "ingredient": "regions_unexplored:purple_lupine",
+  "results": [
     {
-      "output": {
-        "item": "regions_unexplored:purple_lupine"
-      },
       "percentages": [
         1.0,
         1.0,
         0.33
-      ]
+      ],
+      "result": {
+        "id": "regions_unexplored:purple_lupine"
+      }
     }
   ],
   "soilType": "#energizedpower:flowers",

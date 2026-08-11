@@ -1,0 +1,8 @@
+{
+  "type": "energizedpower:sawmill",
+  "ingredient": "regions_unexplored:wisteria_fence",
+  "result": {
+    "id": "regions_unexplored:wisteria_planks"
+  },
+  "sawdustAmount": 2
+}

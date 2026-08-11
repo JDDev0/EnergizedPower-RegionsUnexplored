@@ -2,19 +2,17 @@
   "type": "energizedpower:plant_growth_chamber",
   "fluid": "minecraft:water",
   "fluidConsumption": 0.0625,
-  "ingredient": {
-    "item": "regions_unexplored:dorcel"
-  },
-  "outputs": [
+  "ingredient": "regions_unexplored:dorcel",
+  "results": [
     {
-      "output": {
-        "item": "regions_unexplored:dorcel"
-      },
       "percentages": [
         1.0,
         1.0,
         0.33
-      ]
+      ],
+      "result": {
+        "id": "regions_unexplored:dorcel"
+      }
     }
   ],
   "soilType": "#energizedpower:flowers",

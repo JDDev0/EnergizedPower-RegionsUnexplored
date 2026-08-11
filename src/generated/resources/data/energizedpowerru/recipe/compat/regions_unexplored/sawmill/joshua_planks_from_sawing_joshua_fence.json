@@ -1,16 +1,8 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "regions_unexplored"
-    }
-  ],
   "type": "energizedpower:sawmill",
-  "ingredient": {
-    "item": "regions_unexplored:joshua_fence"
-  },
-  "output": {
-    "item": "regions_unexplored:joshua_planks"
+  "ingredient": "regions_unexplored:joshua_fence",
+  "result": {
+    "id": "regions_unexplored:joshua_planks"
   },
   "sawdustAmount": 2
 }
